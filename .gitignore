@@ -1,0 +1,8 @@
+#ignore dirtectories
+build/intermediates/
+
+#ignore files
+*.ncb
+*.ilk
+*.user
+

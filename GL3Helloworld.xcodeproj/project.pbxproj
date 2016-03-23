@@ -1,0 +1,293 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3B28ADD41CA30A4D00D67794 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B28ADD31CA30A4D00D67794 /* main.m */; };
+		3B28ADDA1CA30A5900D67794 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B28ADD61CA30A5900D67794 /* Assets.xcassets */; };
+		3B28ADDC1CA30A5900D67794 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B28ADD81CA30A5900D67794 /* AppDelegate.m */; };
+		3B28ADE21CA30D9600D67794 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B28ADE01CA30D9600D67794 /* MainMenu.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		3B28ADBF1CA3000500D67794 /* GL3Helloworld.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GL3Helloworld.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B28ADD31CA30A4D00D67794 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = osx/main.m; sourceTree = "<group>"; };
+		3B28ADD51CA30A5900D67794 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = osx/AppDelegate.h; sourceTree = "<group>"; };
+		3B28ADD61CA30A5900D67794 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = osx/Assets.xcassets; sourceTree = "<group>"; };
+		3B28ADD81CA30A5900D67794 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = osx/AppDelegate.m; sourceTree = "<group>"; };
+		3B28ADD91CA30A5900D67794 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = osx/Info.plist; sourceTree = "<group>"; };
+		3B28ADE11CA30D9600D67794 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = osx/Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3B28ADBC1CA3000500D67794 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3B28ADB61CA3000500D67794 = {
+			isa = PBXGroup;
+			children = (
+				3B28ADC11CA3000500D67794 /* GL3Helloworld */,
+				3B28ADC01CA3000500D67794 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3B28ADC01CA3000500D67794 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3B28ADBF1CA3000500D67794 /* GL3Helloworld.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3B28ADC11CA3000500D67794 /* GL3Helloworld */ = {
+			isa = PBXGroup;
+			children = (
+				3B28ADE01CA30D9600D67794 /* MainMenu.xib */,
+				3B28ADD51CA30A5900D67794 /* AppDelegate.h */,
+				3B28ADD61CA30A5900D67794 /* Assets.xcassets */,
+				3B28ADD81CA30A5900D67794 /* AppDelegate.m */,
+				3B28ADD91CA30A5900D67794 /* Info.plist */,
+				3B28ADC51CA3000600D67794 /* Supporting Files */,
+			);
+			path = GL3Helloworld;
+			sourceTree = "<group>";
+		};
+		3B28ADC51CA3000600D67794 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3B28ADD31CA30A4D00D67794 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3B28ADBE1CA3000500D67794 /* GL3Helloworld */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3B28ADD01CA3000600D67794 /* Build configuration list for PBXNativeTarget "GL3Helloworld" */;
+			buildPhases = (
+				3B28ADBB1CA3000500D67794 /* Sources */,
+				3B28ADBC1CA3000500D67794 /* Frameworks */,
+				3B28ADBD1CA3000500D67794 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GL3Helloworld;
+			productName = GL3Helloworld;
+			productReference = 3B28ADBF1CA3000500D67794 /* GL3Helloworld.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3B28ADB71CA3000500D67794 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = "enos sariel";
+				TargetAttributes = {
+					3B28ADBE1CA3000500D67794 = {
+						CreatedOnToolsVersion = 7.2;
+					};
+				};
+			};
+			buildConfigurationList = 3B28ADBA1CA3000500D67794 /* Build configuration list for PBXProject "GL3Helloworld" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3B28ADB61CA3000500D67794;
+			productRefGroup = 3B28ADC01CA3000500D67794 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3B28ADBE1CA3000500D67794 /* GL3Helloworld */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3B28ADBD1CA3000500D67794 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3B28ADDA1CA30A5900D67794 /* Assets.xcassets in Resources */,
+				3B28ADE21CA30D9600D67794 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3B28ADBB1CA3000500D67794 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3B28ADDC1CA30A5900D67794 /* AppDelegate.m in Sources */,
+				3B28ADD41CA30A4D00D67794 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		3B28ADE01CA30D9600D67794 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3B28ADE11CA30D9600D67794 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3B28ADCE1CA3000600D67794 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OBJROOT = build/intermediates/osx;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SYMROOT = build/bin/osx;
+			};
+			name = Debug;
+		};
+		3B28ADCF1CA3000600D67794 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OBJROOT = build/intermediates/osx;
+				SDKROOT = macosx;
+				SYMROOT = build/bin/osx;
+			};
+			name = Release;
+		};
+		3B28ADD11CA3000600D67794 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "$(SRCROOT)/GL3Helloworld/osx/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.msx.GL3Helloworld;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		3B28ADD21CA3000600D67794 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "$(SRCROOT)/GL3Helloworld/osx/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.msx.GL3Helloworld;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3B28ADBA1CA3000500D67794 /* Build configuration list for PBXProject "GL3Helloworld" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3B28ADCE1CA3000600D67794 /* Debug */,
+				3B28ADCF1CA3000600D67794 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3B28ADD01CA3000600D67794 /* Build configuration list for PBXNativeTarget "GL3Helloworld" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3B28ADD11CA3000600D67794 /* Debug */,
+				3B28ADD21CA3000600D67794 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3B28ADB71CA3000500D67794 /* Project object */;
+}
