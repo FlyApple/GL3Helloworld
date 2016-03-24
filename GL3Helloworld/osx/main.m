@@ -8,7 +8,19 @@
 
 #import <Cocoa/Cocoa.h>
 
+#import "OSXApplication.h"
+
+
+//int main(int argc, const char * argv[])
+//{
+//	return NSApplicationMain(argc, argv);
+//}
+
+OSXApplication*	g_pApplication = NULL;
+
 int main(int argc, const char * argv[])
 {
-	return NSApplicationMain(argc, argv);
+	g_pApplication = [OSXApplication new];
+	
+	return OSXApplicationMain(argc, argv);
 }

@@ -8,7 +8,9 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface AppDelegate : NSObject <NSApplicationDelegate>
+#import "osx/OSXApplicationDelegate.h"
+
+@interface AppDelegate : OSXApplicationDelegate
 
 
 @end

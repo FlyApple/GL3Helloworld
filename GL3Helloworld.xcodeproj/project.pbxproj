@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		3B28ADD41CA30A4D00D67794 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B28ADD31CA30A4D00D67794 /* main.m */; };
 		3B28ADDA1CA30A5900D67794 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B28ADD61CA30A5900D67794 /* Assets.xcassets */; };
-		3B28ADDC1CA30A5900D67794 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B28ADD81CA30A5900D67794 /* AppDelegate.m */; };
+		3B28ADDC1CA30A5900D67794 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3B28ADD81CA30A5900D67794 /* AppDelegate.mm */; };
 		3B28ADE21CA30D9600D67794 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B28ADE01CA30D9600D67794 /* MainMenu.xib */; };
 		3B54A7B81CA317AC008D1C11 /* Application.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B54A7B71CA317AC008D1C11 /* Application.cpp */; };
 		3BCA55801CA4505700C9144C /* LogManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3BCA55781CA4505700C9144C /* LogManager.cpp */; };
@@ -18,6 +18,9 @@
 		3BCA55831CA4505700C9144C /* RenderWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3BCA557E1CA4505700C9144C /* RenderWindow.cpp */; };
 		3BFC6BCF1CA479330047A11F /* GL3RenderSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3BFC6BCE1CA479330047A11F /* GL3RenderSystem.cpp */; };
 		3BFC6BD21CA479970047A11F /* GL3Helloworld.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3BFC6BD11CA479970047A11F /* GL3Helloworld.cpp */; };
+		3BFC6BD41CA47C7B0047A11F /* OSXApplicationMain.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BFC6BD31CA47C7B0047A11F /* OSXApplicationMain.m */; };
+		3BFC6BD81CA480300047A11F /* OSXApplicationDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3BFC6BD71CA480300047A11F /* OSXApplicationDelegate.mm */; };
+		3BFC6BDA1CA482910047A11F /* OSXApplication.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3BFC6BD91CA482910047A11F /* OSXApplication.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,7 +28,7 @@
 		3B28ADD31CA30A4D00D67794 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = osx/main.m; sourceTree = "<group>"; };
 		3B28ADD51CA30A5900D67794 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = osx/AppDelegate.h; sourceTree = "<group>"; };
 		3B28ADD61CA30A5900D67794 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = osx/Assets.xcassets; sourceTree = "<group>"; };
-		3B28ADD81CA30A5900D67794 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = osx/AppDelegate.m; sourceTree = "<group>"; };
+		3B28ADD81CA30A5900D67794 /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = osx/AppDelegate.mm; sourceTree = "<group>"; };
 		3B28ADD91CA30A5900D67794 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = osx/Info.plist; sourceTree = "<group>"; };
 		3B28ADE11CA30D9600D67794 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = osx/Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		3B54A7B41CA31490008D1C11 /* Precompile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Precompile.h; path = engine/Core/Precompile.h; sourceTree = "<group>"; };
@@ -49,6 +52,11 @@
 		3BFC6BCE1CA479330047A11F /* GL3RenderSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GL3RenderSystem.cpp; path = engine/RenderSystem/GL3/GL3RenderSystem.cpp; sourceTree = "<group>"; };
 		3BFC6BD01CA479970047A11F /* GL3Helloworld.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GL3Helloworld.h; sourceTree = "<group>"; };
 		3BFC6BD11CA479970047A11F /* GL3Helloworld.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GL3Helloworld.cpp; sourceTree = "<group>"; };
+		3BFC6BD31CA47C7B0047A11F /* OSXApplicationMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OSXApplicationMain.m; path = engine/Core/osx/OSXApplicationMain.m; sourceTree = "<group>"; };
+		3BFC6BD51CA47DAF0047A11F /* OSXApplication.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OSXApplication.h; path = engine/Core/osx/OSXApplication.h; sourceTree = "<group>"; };
+		3BFC6BD61CA480300047A11F /* OSXApplicationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OSXApplicationDelegate.h; path = engine/Core/osx/OSXApplicationDelegate.h; sourceTree = "<group>"; };
+		3BFC6BD71CA480300047A11F /* OSXApplicationDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = OSXApplicationDelegate.mm; path = engine/Core/osx/OSXApplicationDelegate.mm; sourceTree = "<group>"; };
+		3BFC6BD91CA482910047A11F /* OSXApplication.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = OSXApplication.mm; path = engine/Core/osx/OSXApplication.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,7 +93,7 @@
 				3B28ADE01CA30D9600D67794 /* MainMenu.xib */,
 				3B28ADD51CA30A5900D67794 /* AppDelegate.h */,
 				3B28ADD61CA30A5900D67794 /* Assets.xcassets */,
-				3B28ADD81CA30A5900D67794 /* AppDelegate.m */,
+				3B28ADD81CA30A5900D67794 /* AppDelegate.mm */,
 				3B28ADD91CA30A5900D67794 /* Info.plist */,
 				3B28ADC51CA3000600D67794 /* Supporting Files */,
 			);
@@ -154,6 +162,11 @@
 		3BFC6BCA1CA4790E0047A11F /* osx */ = {
 			isa = PBXGroup;
 			children = (
+				3BFC6BD51CA47DAF0047A11F /* OSXApplication.h */,
+				3BFC6BD91CA482910047A11F /* OSXApplication.mm */,
+				3BFC6BD61CA480300047A11F /* OSXApplicationDelegate.h */,
+				3BFC6BD71CA480300047A11F /* OSXApplicationDelegate.mm */,
+				3BFC6BD31CA47C7B0047A11F /* OSXApplicationMain.m */,
 			);
 			name = osx;
 			sourceTree = "<group>";
@@ -240,12 +253,15 @@
 				3BCA55811CA4505700C9144C /* RenderSystem.cpp in Sources */,
 				3BFC6BD21CA479970047A11F /* GL3Helloworld.cpp in Sources */,
 				3BCA55801CA4505700C9144C /* LogManager.cpp in Sources */,
-				3B28ADDC1CA30A5900D67794 /* AppDelegate.m in Sources */,
+				3B28ADDC1CA30A5900D67794 /* AppDelegate.mm in Sources */,
 				3B28ADD41CA30A4D00D67794 /* main.m in Sources */,
+				3BFC6BD41CA47C7B0047A11F /* OSXApplicationMain.m in Sources */,
+				3BFC6BD81CA480300047A11F /* OSXApplicationDelegate.mm in Sources */,
 				3BCA55821CA4505700C9144C /* RenderTarget.cpp in Sources */,
 				3BCA55831CA4505700C9144C /* RenderWindow.cpp in Sources */,
 				3B54A7B81CA317AC008D1C11 /* Application.cpp in Sources */,
 				3BFC6BCF1CA479330047A11F /* GL3RenderSystem.cpp in Sources */,
+				3BFC6BDA1CA482910047A11F /* OSXApplication.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -351,6 +367,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				HEADER_SEARCH_PATHS = engine/core;
 				INFOPLIST_FILE = "$(SRCROOT)/GL3Helloworld/osx/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.msx.GL3Helloworld;
@@ -363,6 +380,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				HEADER_SEARCH_PATHS = engine/core;
 				INFOPLIST_FILE = "$(SRCROOT)/GL3Helloworld/osx/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.msx.GL3Helloworld;
