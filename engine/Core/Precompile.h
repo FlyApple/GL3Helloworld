@@ -30,6 +30,8 @@
 #include <vector>
 #include <string>
 
+#include <ctime>
+
 //
 #if defined (_PLATFORM_MAC_)
 
@@ -60,7 +62,12 @@
 
 #else
 
+#define __T(x)					L ## x
+#define _T(x)					__T(x)
+#define _TEXT(x)				__T(x)
+		
 #define MXE_CALLBACK
+
 #endif
 
 //
@@ -76,6 +83,39 @@
 #define StringT			StringA
 #endif
 #define StringArrayT	std::vector<StringT>
+
+//
+#include <iomanip>
+#include <iostream>
+#include <fstream>
+#include <sstream>
+
+
+// 语言支持
+#if defined(_PLATFORM_WINDOW_)
+	#define MXE_STREAM_LOCALE_CHS	"chs"
+	#define MXE_STREAM_LOCALE_ENG	"eng"
+#endif
+
+//
+typedef std::basic_stringstream<TCHAR>		_stringstream_base;
+typedef std::basic_ofstream<TCHAR>			_ofstream_base;
+
+typedef _stringstream_base					stringstreamT;
+typedef _ofstream_base						ofstreamT;
+
+// 这部分需要定义到std名空间
+namespace std{
+	#ifdef _UNICODE
+	#define coutT			wcout
+	#define cerrT			wcerr
+	#define endlT			endl
+	#else
+	#define coutT			cout
+	#define cerrT			cerr
+	#define endlT			endl
+	#endif
+}; //namespace std
 
 //
 __inline StringT StringToLower(StringT str)

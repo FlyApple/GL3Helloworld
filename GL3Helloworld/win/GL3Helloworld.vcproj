@@ -388,11 +388,35 @@
 					>
 				</File>
 				<File
+					RelativePath="..\..\engine\Core\LogManager.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\engine\Core\LogManager.h"
+					>
+				</File>
+				<File
 					RelativePath="..\..\engine\Core\Platform.h"
 					>
 				</File>
 				<File
 					RelativePath="..\..\engine\Core\Precompile.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\engine\Core\RenderSystem.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\engine\Core\RenderSystem.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\engine\Core\RenderTarget.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\engine\Core\RenderTarget.h"
 					>
 				</File>
 				<File
@@ -428,6 +452,14 @@
 					>
 					<File
 						RelativePath="..\..\engine\RenderSystem\GL3\GL3Precompile.h"
+						>
+					</File>
+					<File
+						RelativePath="..\..\engine\RenderSystem\GL3\GL3RenderSystem.cpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\engine\RenderSystem\GL3\GL3RenderSystem.h"
 						>
 					</File>
 					<Filter

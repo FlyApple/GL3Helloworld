@@ -16,13 +16,15 @@
 #include "CoreBase.h"
 
 //
+class LogManager;
 class RenderWindow;
+class RenderSystem;
 
 //
 class Application : public SingletonT<Application>, public CoreInstance
 {
 public:
-	Application();
+	Application(const StringT& stringLogFileName = _T("Application.log"));
 	virtual ~Application();
 	
 	virtual bool	Initialize();
@@ -31,12 +33,22 @@ public:
 	virtual BOOL	InitInstance();
 	virtual BOOL	ExitInstance();
 
+	virtual VOID	Rendering();
+
+private:
+	StringT					m_stringVersion;
+	LogManager*				m_pLogManager;
+
 public:
 	BOOL					ActiveRenderWindow(RenderWindow* pRenderWindow);
 	template<typename Ty>	Ty*		ActiveRenderWindow(){ return reinterpret_cast<Ty*>(m_pRenderWindow); }
 
+	BOOL					ActiveRenderSystem(RenderSystem* pRenderSystem);
+	template<typename Ty>	Ty*		ActiveRenderSystem(){ return reinterpret_cast<Ty*>(m_pRenderSystem); }
+
 protected:
 	RenderWindow*			m_pRenderWindow;
+	RenderSystem*			m_pRenderSystem;
 };
 
 #endif /* __MXE_Application_H__ */

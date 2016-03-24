@@ -4,10 +4,10 @@
 #pragma once
 
 //
-#include "CoreBase.h"
+#include "RenderTarget.h"
 
 //
-class RenderWindow	: public CoreClass
+class RenderWindow	: public RenderTarget
 {
 public:
 	RenderWindow(void);
@@ -16,6 +16,9 @@ public:
 public:
 	virtual BOOL	LoadRenderWindow(const StringDictionaryT<ULONG_PTR>& option_values);
 	virtual	BOOL	DestroyRenderWindow();
+
+	virtual	BOOL	RenderBegin(RenderSystem* pRenderSystem){ return TRUE; };
+	virtual BOOL	RenderEnd(RenderSystem* pRenderSystem){ return TRUE; };
 
 protected:
 	float				m_fWidth;

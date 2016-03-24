@@ -16,6 +16,9 @@ public:
 	virtual BOOL	LoadRenderWindow(const StringDictionaryT<ULONG_PTR>& option_values);
 	virtual	BOOL	DestroyRenderWindow();
 
+	virtual	BOOL	RenderBegin(RenderSystem* pRenderSystem);
+	virtual BOOL	RenderEnd(RenderSystem* pRenderSystem);
+
 protected:
 	virtual BOOL	InitializeOpenGL();
 	virtual VOID	ReleaseOpenGL();
@@ -25,6 +28,9 @@ protected:
 	PIXELFORMATDESCRIPTOR	m_PixelFormatDesc;
 
 	HGLRC					m_hGLRC;
+
+	float					m_fX;
+	float					m_fY;
 };
 
 

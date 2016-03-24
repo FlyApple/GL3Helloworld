@@ -6,6 +6,8 @@
 #include "Precompile.h"
 #include "GL3Precompile.h"
 #include "win/GL3RenderWindow.h"
+#include "GL3RenderSystem.h"
+
 #include "../GL3Helloworld.h"
 
 
@@ -44,6 +46,7 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
 	UNREFERENCED_PARAMETER(lpCmdLine);
 
 	g_Helloworld.ActiveRenderWindow(new GL3RenderWindow());
+	g_Helloworld.ActiveRenderSystem(new GL3RenderSystem());
 	g_Helloworld.Initialize();
 
 	// 初始化全局字符串
@@ -120,6 +123,8 @@ BOOL	InitInstance(HINSTANCE hInstance)
 	//
 	StringDictionaryT<ULONG_PTR>	option_values;
 	option_values[_T("Handle")]			= (ULONG_PTR)g_hWnd;	
+	option_values[_T("X")]				= 0;
+	option_values[_T("Y")]				= 0;
 	option_values[_T("Width")]			= g_lWidth;
 	option_values[_T("Height")]			= g_lHeight;
 

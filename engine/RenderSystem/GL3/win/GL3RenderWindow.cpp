@@ -9,6 +9,11 @@ GL3RenderWindow::GL3RenderWindow(void)
 {
 	m_hDC		= NULL;
 	m_hGLRC		= NULL;
+	
+	ZeroMemory(&m_PixelFormatDesc, sizeof(PIXELFORMATDESCRIPTOR));
+
+	m_fX		= 0.0f;
+	m_fY		= 0.0f;
 }
 
 GL3RenderWindow::~GL3RenderWindow(void)
@@ -59,6 +64,14 @@ BOOL	GL3RenderWindow::LoadRenderWindow(const StringDictionaryT<ULONG_PTR>& optio
 		else if(_tcsicmp(i->first.c_str(), _T("StencilBits")) == 0)
 		{
 			m_PixelFormatDesc.cStencilBits	= (BYTE)i->second;
+		}
+		else if(_tcsicmp(i->first.c_str(), _T("X")) == 0)
+		{
+			m_fX	= (float)i->second;
+		}
+		else if(_tcsicmp(i->first.c_str(), _T("Y")) == 0)
+		{
+			m_fY	= (float)i->second;
 		}
 	}
 
@@ -130,4 +143,21 @@ BOOL	GL3RenderWindow::InitializeOpenGL()
 	}
 
 	return TRUE;
+}
+
+
+BOOL	GL3RenderWindow::RenderBegin(RenderSystem* pRenderSystem)
+{ 
+	if(!pRenderSystem){ return FALSE; }
+
+	//
+	glViewport((GLint)m_fX, (GLint)m_fY, (GLsizei)m_fWidth, (GLsizei)m_fHeight);
+
+	return TRUE; 
+}
+
+BOOL	GL3RenderWindow::RenderEnd(RenderSystem* pRenderSystem)
+{ 
+	SwapBuffers(m_hDC);
+	return TRUE; 
 }

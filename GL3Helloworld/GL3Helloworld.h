@@ -20,8 +20,6 @@ public:
 	virtual BOOL	InitInstance();
 	virtual BOOL	ExitInstance();
 
-	virtual VOID	Rendering();
-
 private:
 
 };
