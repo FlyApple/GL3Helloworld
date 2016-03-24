@@ -3,7 +3,7 @@
 //  GLTest
 //
 //  Created by enos sariel on 15/12/19.
-//  Copyright © 2015年 enos sariel. All rights reserved.
+//
 //
 
 #ifndef __MXE_Precompile_H__
@@ -15,10 +15,16 @@
 #include "Platform.h"
 
 //
+#if defined (_PLATFORM_WINDOW_)
+#pragma warning(disable: 4819)
+#endif
+
+//
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdarg.h>
 
+#include <algorithm>
 #include <list>
 #include <map>
 #include <vector>
@@ -37,14 +43,23 @@
 #define MXE_API_CPP
 
 #else
+
+//
 #define MXE_API_C				extern "C"
 #define MXE_API_CPP
+
+
 #endif
 
 //
 #if defined(_PLATFORM_WINDOW_)
+
+#include <tchar.h>
+
 #define MXE_CALLBACK			__stdcall
+
 #else
+
 #define MXE_CALLBACK
 #endif
 

@@ -1,6 +1,6 @@
 //
 //  Application.hpp
-//  GLTest
+//  
 //
 //  Created by enos sariel on 15/12/19.
 //  Copyright © 2015年 enos sariel. All rights reserved.
@@ -16,6 +16,9 @@
 #include "CoreBase.h"
 
 //
+class RenderWindow;
+
+//
 class Application : public SingletonT<Application>, public CoreInstance
 {
 public:
@@ -27,6 +30,13 @@ public:
 	
 	virtual BOOL	InitInstance();
 	virtual BOOL	ExitInstance();
+
+public:
+	BOOL					ActiveRenderWindow(RenderWindow* pRenderWindow);
+	template<typename Ty>	Ty*		ActiveRenderWindow(){ return reinterpret_cast<Ty*>(m_pRenderWindow); }
+
+protected:
+	RenderWindow*			m_pRenderWindow;
 };
 
 #endif /* __MXE_Application_H__ */

@@ -5,4 +5,5 @@ build/intermediates/
 *.ncb
 *.ilk
 *.user
+*.suo
 

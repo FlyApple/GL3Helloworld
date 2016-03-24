@@ -15,22 +15,24 @@
 #include <assert.h>
 
 //
-template<typename _Ty>
-class SingletonT
+template<typename _Ty> class SingletonT
 {
 public:
-	SingletonT()
+	SingletonT( void )
 	{
+		assert( !ms_Singleton ); 
 		ms_Singleton	= (_Ty*)this;
 	}
-	virtual ~SingletonT()
+	virtual ~SingletonT( void )
 	{
+		assert( ms_Singleton ); 
 		ms_Singleton	= NULL;
 	}
-	
-	static _Ty*		getSingletonPtr(){ return ms_Singleton; }
-	static _Ty&		getSingleton(){ return *ms_Singleton; }
-private:
+
+	static _Ty&		getSingleton( void ){ assert( ms_Singleton ); return (*ms_Singleton); }	
+	static _Ty*		getSingletonPtr( void ){ return ms_Singleton; }
+
+protected:
 	static _Ty*		ms_Singleton;
 };
 #define SINGLETON_IMPLE(_Ty)	template<typename _Ty>	_Ty* SingletonT<_Ty>::ms_Singleton = NULL;

@@ -3,7 +3,7 @@
 //  GL3Helloworld
 //
 //  Created by enos sariel on 16/3/24.
-//  Copyright © 2016年 enos sariel. All rights reserved.
+//
 //
 
 #ifndef __MXE_Platform_H__
