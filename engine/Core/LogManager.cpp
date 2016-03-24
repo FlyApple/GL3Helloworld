@@ -13,7 +13,11 @@ Log::Log( const StringT& name, bool debugger_output, bool suppress_file_output )
 	// 是否创建日志文件:
 	if (!m_bSuppressFile)
 	{
+#if !defined (_PLATFORM_WINDOW_) && defined(_UNICODE)
+		m_fpLog.open(StringWToStringA(name));
+#else
 		m_fpLog.open(name.c_str());
+#endif
 	}
 }
 
@@ -40,11 +44,9 @@ void	Log::LogMessage( const StringT& message, LogMessageLevel lml, bool mask_deb
 		{
 			if (m_bTimeStamp)
 			{
-				tm		tmTime	= {0};
 				time_t	ctTime; time(&ctTime);
 
-				tm*		pTime	= &tmTime;
-				localtime_s( &tmTime, &ctTime );
+				tm*		pTime	= localtime( &ctTime );
 
 				m_fpLog << std::setw(2) << std::setfill(_T('0')) << pTime->tm_hour
 					<< _T(":") << std::setw(2) << std::setfill(_T('0')) << pTime->tm_min

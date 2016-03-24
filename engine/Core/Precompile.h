@@ -1,6 +1,6 @@
 //
 //  Precompile.h
-//  GLTest
+//  
 //
 //  Created by enos sariel on 15/12/19.
 //
@@ -10,6 +10,8 @@
 #define __MXE_Precompile_H__
 
 #pragma once
+
+#define _UNICODE
 
 //
 #include "Platform.h"
@@ -62,9 +64,8 @@
 
 #else
 
-#define __T(x)					L ## x
-#define _T(x)					__T(x)
-#define _TEXT(x)				__T(x)
+#include "base/baseT.h"
+#include "base/charT.h"
 		
 #define MXE_CALLBACK
 
@@ -91,10 +92,29 @@
 #include <sstream>
 
 
-// ÓïÑÔÖ§³Ö
+// è¯­è¨€æ”¯æŒ
 #if defined(_PLATFORM_WINDOW_)
 	#define MXE_STREAM_LOCALE_CHS	"chs"
 	#define MXE_STREAM_LOCALE_ENG	"eng"
+
+#else
+
+#include <codecvt>
+
+__inline StringW StringAToStringW(StringA str)
+{
+	std::wstring_convert<std::codecvt_utf8<WCHAR>> convert;
+	StringW result = convert.from_bytes(str);
+	return result;
+}
+
+__inline StringA StringWToStringA(StringW str)
+{
+	std::wstring_convert<std::codecvt_utf8<WCHAR>> convert;
+	StringA result = convert.to_bytes(str);
+	return result;
+}
+
 #endif
 
 //
@@ -104,7 +124,7 @@ typedef std::basic_ofstream<TCHAR>			_ofstream_base;
 typedef _stringstream_base					stringstreamT;
 typedef _ofstream_base						ofstreamT;
 
-// Õâ²¿·ÖĞèÒª¶¨Òåµ½stdÃû¿Õ¼ä
+// è¿™éƒ¨åˆ†éœ€è¦å®šä¹‰åˆ°stdåç©ºé—´
 namespace std{
 	#ifdef _UNICODE
 	#define coutT			wcout
