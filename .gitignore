@@ -7,3 +7,5 @@ build/intermediates/
 *.user
 *.suo
 
+
+*.log
