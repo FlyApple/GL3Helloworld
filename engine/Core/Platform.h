@@ -13,6 +13,7 @@
 
 //
 #if defined (__APPLE__)
+//#if defined(__GNUC__) && ( defined(__APPLE_CPP__) || defined(__APPLE_CC__) || defined(__MACOS_CLASSIC__) )
 
 #define __OS_APPLE_MAC__
 

@@ -7,12 +7,60 @@
 //
 
 #import "AppDelegate.h"
+#include "Precompile.h"
 
+#include "GL3Helloworld.h"
+#include "GL3RenderSystem.h"
+
+#include "LogManager.h"
+
+//
+GL3Helloworld*		m_pHelloworld;
+
+//
+@implementation AppHelloworld
+
+-(void)	Release
+{
+	if(m_pHelloworld)
+	{
+		m_pHelloworld->Release();
+		MXE_DELETE_POINTER(m_pHelloworld);
+	}
+}
+
+-(bool)	Initialize
+{
+	if(![super Initialize])
+	{
+		NSLog(@"<%s> Application initialize fail.", __FUNCTION__);
+		return false;
+	}
+	
+	m_pHelloworld = new GL3Helloworld();
+	m_pHelloworld->ActiveRenderSystem(new GL3RenderSystem());
+	if(!m_pHelloworld->Initialize())
+	{
+		NSLog(@"<%s> Application initialize fail.", __FUNCTION__);
+		return false;
+	}
+	
+	//
+//	LogManager::getSingleton().LogMessage(_T("<") + StringAToStringT(__FUNCTION__) + _T(">") +
+//										  _T(" Application 初始化完成了..."));
+	return true;
+}
+
+@end
+
+//
 @interface AppDelegate ()
 
 @property (weak) IBOutlet NSWindow *window;
 @end
 
+
+//
 @implementation AppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification

@@ -8,7 +8,12 @@
 
 #import <Cocoa/Cocoa.h>
 
+#import "osx/OSXApplication.h"
 #import "osx/OSXApplicationDelegate.h"
+
+@interface AppHelloworld : OSXApplication
+
+@end
 
 @interface AppDelegate : OSXApplicationDelegate
 

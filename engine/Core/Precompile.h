@@ -19,6 +19,14 @@
 //
 #if defined (_PLATFORM_WINDOW_)
 #pragma warning(disable: 4819)
+#elif defined (_PLATFORM_MAC_)
+
+#if defined(__OBJC__)
+#if !defined(__COREFOUNDATION__) || (__COREFOUNDATION__ == 0)
+	#error "'Precompile.h' in objective-c, it must be imported or included in it before: ‘Cocoa/Cocoa.h’."
+#endif
+#endif
+
 #endif
 
 //
@@ -38,6 +46,26 @@
 #if defined (_PLATFORM_MAC_)
 
 //
+#if !defined(OBJC_BOOL_DEFINED)
+
+#define OBJC_BOOL_DEFINED
+
+#if (TARGET_OS_IPHONE && __LP64__)  ||  TARGET_OS_WATCH
+#define OBJC_BOOL_IS_BOOL		1
+#define BOOL					bool
+#else
+#define OBJC_BOOL_IS_CHAR		1
+#define BOOL					signed char
+#endif
+
+#endif
+
+#define TRUE					1
+#define FALSE					0
+
+#elif defined(_PLATFORM_LINUX_)
+
+//
 #define BOOL					int
 #define TRUE					1
 #define FALSE					0
@@ -46,7 +74,7 @@
 #define MXE_API_C				extern "C"
 #define MXE_API_CPP
 
-#else
+#else	//_PLATFORM_X_ other platform.
 
 //
 #define MXE_API_C				extern "C"
@@ -97,7 +125,14 @@
 	#define MXE_STREAM_LOCALE_CHS	"chs"
 	#define MXE_STREAM_LOCALE_ENG	"eng"
 
-#else
+#elif defined(_PLATFORM_MAC_)
+	#define MXE_STREAM_LOCALE_CHS	"zh_CN"
+	#define MXE_STREAM_LOCALE_ENG	"en_US"
+
+#endif
+
+//
+#if defined(_PLATFORM_MAC_) || defined(_PLATFORM_LINUX_)
 
 #include <codecvt>
 
@@ -114,6 +149,25 @@ __inline StringA StringWToStringA(StringW str)
 	StringA result = convert.to_bytes(str);
 	return result;
 }
+
+__inline StringT StringAToStringT(StringA str)
+{
+#ifdef _UNICODE
+	return StringAToStringW(str);
+#else
+	return str;
+#endif
+}
+
+__inline StringT StringWToStringT(StringW str)
+{
+#ifdef _UNICODE
+	return str;
+#else
+	return StringWToStringA(str);
+#endif
+}
+
 
 #endif
 

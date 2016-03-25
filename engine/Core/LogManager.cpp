@@ -110,6 +110,9 @@ bool	LogManager::Initialize()
 	std::coutT.imbue(std::locale(MXE_STREAM_LOCALE_CHS));
 	std::cerrT.imbue(std::locale(MXE_STREAM_LOCALE_CHS));
 #endif
+#elif defined(_PLATFORM_MAC_)
+	std::coutT.imbue(std::locale(MXE_STREAM_LOCALE_CHS));
+	std::cerrT.imbue(std::locale(MXE_STREAM_LOCALE_CHS));
 #endif
 
 	//

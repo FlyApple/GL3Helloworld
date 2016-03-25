@@ -6,9 +6,11 @@
 //  Copyright © 2015年 enos sariel. All rights reserved.
 //
 
+#import "OSXApplication.h"
 #import "OSXApplicationDelegate.h"
 
 
+//
 @implementation OSXApplicationDelegate
 
 // 再关闭主窗口时退出程序，嗯就这酱紫的。
@@ -49,6 +51,8 @@
 {
 	// Insert code here to tear down your application
 	
+	// 由于NSApplicationMain 不会返回，需要在此处增加释放。
+	[[OSXApplication InstancePtr] Release];
 }
 
 @end
