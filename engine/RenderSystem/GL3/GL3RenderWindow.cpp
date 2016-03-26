@@ -78,6 +78,7 @@ BOOL	GL3RenderWindow::onRenderBegin(RenderSystem* pRenderSystem)
 }
 
 BOOL	GL3RenderWindow::onRenderEnd(RenderSystem* pRenderSystem)
-{ 
-	return TRUE; 
+{
+	//
+	return RenderWindow::onRenderEnd(pRenderSystem);
 }

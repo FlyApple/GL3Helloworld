@@ -17,6 +17,8 @@ public:
 	virtual BOOL	LoadRenderWindow(const StringDictionaryT<ULONG_PTR>& option_values);
 	virtual	BOOL	DestroyRenderWindow();
 
+	virtual VOID	Resize(float width, float height);
+	
 	virtual BOOL	Update(RenderSystem* pRenderSystem);
 	
 protected:

@@ -83,6 +83,8 @@
 
 #endif
 
+
+
 //
 #if defined(_PLATFORM_WINDOW_)
 
@@ -98,6 +100,9 @@
 #define MXE_CALLBACK
 
 #endif
+
+
+
 
 //
 #define MXE_DELETE_POINTER(pointer)	if(pointer){ delete pointer; pointer = NULL; }

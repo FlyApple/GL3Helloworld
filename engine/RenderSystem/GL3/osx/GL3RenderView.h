@@ -7,14 +7,15 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "GL3Context3D.h"
+
+//
+class GL3OSXRenderWindow;
 
 //
 @interface GL3RenderView : NSOpenGLView
 {
-
 @protected
-	GL3Context3D*	m_pContext3D;
+	GL3OSXRenderWindow*	m_pRenderWindow;
 	
 @private
 	float			m_fWidth;
@@ -25,7 +26,7 @@
 @property(assign,readonly) float	renderWidth;
 @property(assign,readonly) float	renderHeight;
 
-- (GL3Context3D*)createContext3D;
+- (GL3OSXRenderWindow*)loadOpenGLRenderWindow;
 - (BOOL)initializeOpenGL;
 - (BOOL)releaseOpenGL;
 - (void)render;

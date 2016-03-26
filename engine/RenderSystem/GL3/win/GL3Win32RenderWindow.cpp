@@ -20,14 +20,15 @@ GL3Win32RenderWindow::~GL3Win32RenderWindow(void)
 
 BOOL	GL3Win32RenderWindow::DestroyRenderWindow()
 {
-	ReleaseOpenGL();
-
+	if(!GL3RenderWindow::DestroyRenderWindow())
+	{ return FALSE; }
+	
 	if(m_hDC)
 	{
 		ReleaseDC(m_hWnd, m_hDC);
 		m_hDC = NULL;
 	}
-	return GL3RenderWindow::DestroyRenderWindow();
+	return TRUE;
 }
 
 BOOL	GL3Win32RenderWindow::LoadRenderWindow(const StringDictionaryT<ULONG_PTR>& option_values)

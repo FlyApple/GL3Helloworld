@@ -19,17 +19,17 @@
 
 
 //
-GL3Helloworld*		m_pHelloworld;
+GL3Helloworld*		g_pHelloworld;
 
 //
 @implementation AppHelloworld
 
 -(void)	Release
 {
-	if(m_pHelloworld)
+	if(g_pHelloworld)
 	{
-		m_pHelloworld->Release();
-		MXE_DELETE_POINTER(m_pHelloworld);
+		g_pHelloworld->Release();
+		MXE_DELETE_POINTER(g_pHelloworld);
 	}
 }
 
@@ -41,10 +41,10 @@ GL3Helloworld*		m_pHelloworld;
 		return false;
 	}
 	
-	m_pHelloworld = new GL3Helloworld();
-	m_pHelloworld->ActiveRenderWindow(new GL3OSXRenderWindow());
-	m_pHelloworld->ActiveRenderSystem(new GL3RenderSystem());
-	if(!m_pHelloworld->Initialize())
+	g_pHelloworld = new GL3Helloworld();
+	g_pHelloworld->ActiveRenderWindow(new GL3OSXRenderWindow());
+	g_pHelloworld->ActiveRenderSystem(new GL3RenderSystem());
+	if(!g_pHelloworld->Initialize())
 	{
 		NSLog(@"<%s> Application initialize fail.", __FUNCTION__);
 		return false;
@@ -71,11 +71,21 @@ GL3Helloworld*		m_pHelloworld;
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
 	// Insert code here to initialize your application
+	
+	if(!g_pHelloworld || !g_pHelloworld->InitInstance())
+	{
+		LogManager::getSingleton().LogMessage(_T("<") + StringAToStringT(__FUNCTION__) + _T(">") +
+											  _T(" InitInstance error."));
+		return ;
+	}
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification
 {
 	// Insert code here to tear down your application
+	
+	if(g_pHelloworld)
+	{ g_pHelloworld->ExitInstance(); }
 	
 	//必须手动调用父类方法
 	[super applicationWillTerminate:aNotification];

@@ -37,6 +37,12 @@ BOOL	RenderWindow::LoadRenderWindow(const StringDictionaryT<ULONG_PTR>& option_v
 	return TRUE;
 }
 
+VOID	RenderWindow::Resize(float width, float height)
+{
+	this->m_fWidth		= width;
+	this->m_fHeight		= height;
+}
+
 BOOL	RenderWindow::Update(RenderSystem* pRenderSystem)
 {
 	if(this->onRenderBegin(pRenderSystem))

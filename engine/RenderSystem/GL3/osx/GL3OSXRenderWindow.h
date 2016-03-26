@@ -13,9 +13,17 @@ public:
 	GL3OSXRenderWindow(void);
 	virtual ~GL3OSXRenderWindow(void);
 
+	//
+	CGLPixelFormatObj	getCGLPixelFormatObj() { return this->m_pPixelFormatObj; }
+	CGLContextObj		getCGLContextObj() { return this->m_pContextObj; }
+	
+	//
 	virtual BOOL	LoadRenderWindow(const StringDictionaryT<ULONG_PTR>& option_values);
 	virtual	BOOL	DestroyRenderWindow();
 
+	//
+	virtual VOID	Resize(float width, float height);
+	
 protected:
 	virtual BOOL	InitializeOpenGL();
 	virtual VOID	ReleaseOpenGL();

@@ -8,6 +8,8 @@
 //
 GL3OSXRenderWindow::GL3OSXRenderWindow(void)
 {
+	this->m_pPixelFormatObj		= NULL;
+	this->m_pContextObj			= NULL;
 }
 
 GL3OSXRenderWindow::~GL3OSXRenderWindow(void)
@@ -16,9 +18,11 @@ GL3OSXRenderWindow::~GL3OSXRenderWindow(void)
 
 BOOL	GL3OSXRenderWindow::DestroyRenderWindow()
 {
-	ReleaseOpenGL();
-
-	return GL3RenderWindow::DestroyRenderWindow();
+	if(!GL3RenderWindow::DestroyRenderWindow())
+	{ return FALSE; }
+	
+	//
+	return TRUE;
 }
 
 BOOL	GL3OSXRenderWindow::LoadRenderWindow(const StringDictionaryT<ULONG_PTR>& option_values)
@@ -36,6 +40,24 @@ BOOL	GL3OSXRenderWindow::LoadRenderWindow(const StringDictionaryT<ULONG_PTR>& op
 
 VOID	GL3OSXRenderWindow::ReleaseOpenGL()
 {
+	if(m_pContextObj)
+	{
+		CGLContextObj	pContextObj = CGLGetCurrentContext();
+		if(pContextObj == m_pContextObj)
+		{
+			CGLSetCurrentContext(NULL);
+		}
+		
+		CGLReleaseContext(m_pContextObj);
+		m_pContextObj = NULL;
+	}
+	
+	if(m_pPixelFormatObj)
+	{
+		//CGLDestroyPixelFormat : Calling this function is equivalent to calling CGLReleasePixelFormat.
+		CGLReleasePixelFormat(m_pPixelFormatObj);
+		m_pPixelFormatObj = NULL;
+	}
 }
 
 BOOL	GL3OSXRenderWindow::InitializeOpenGL()
@@ -90,6 +112,15 @@ BOOL	GL3OSXRenderWindow::InitializeOpenGL()
 }
 
 
+VOID	GL3OSXRenderWindow::Resize(float width, float height)
+{
+	GL3RenderWindow::Resize(width, height);
+	
+	//
+	
+}
+
+
 BOOL	GL3OSXRenderWindow::onRenderBegin(RenderSystem* pRenderSystem)
 { 
 	if(!GL3RenderWindow::onRenderBegin(pRenderSystem))
@@ -100,7 +131,12 @@ BOOL	GL3OSXRenderWindow::onRenderBegin(RenderSystem* pRenderSystem)
 }
 
 BOOL	GL3OSXRenderWindow::onRenderEnd(RenderSystem* pRenderSystem)
-{ 
+{
+	if(m_pContextObj)
+	{
+		CGLFlushDrawable(m_pContextObj);
+	}
+	
 	//
 	return GL3RenderWindow::onRenderEnd(pRenderSystem);
 }
