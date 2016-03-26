@@ -6,6 +6,8 @@
 //  Copyright © 2015年 enos sariel. All rights reserved.
 //
 
+#import <Cocoa/Cocoa.h>
+
 #import "osx/GL3RenderView.h"
 
 @interface View3D : GL3RenderView

@@ -5,7 +5,7 @@
 
 #include "Precompile.h"
 #include "GL3Precompile.h"
-#include "win/GL3RenderWindow.h"
+#include "win/GL3Win32RenderWindow.h"
 #include "GL3RenderSystem.h"
 
 #include "../GL3Helloworld.h"
@@ -45,7 +45,7 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
 	UNREFERENCED_PARAMETER(hPrevInstance);
 	UNREFERENCED_PARAMETER(lpCmdLine);
 
-	g_Helloworld.ActiveRenderWindow(new GL3RenderWindow());
+	g_Helloworld.ActiveRenderWindow(new GL3Win32RenderWindow());
 	g_Helloworld.ActiveRenderSystem(new GL3RenderSystem());
 	g_Helloworld.Initialize();
 
@@ -132,7 +132,7 @@ BOOL	InitInstance(HINSTANCE hInstance)
 	option_values[_T("DepthBits")]		= 16;
 	option_values[_T("StencilBits")]	= 1;
 
-	if(!g_Helloworld.ActiveRenderWindow<GL3RenderWindow>()->LoadRenderWindow(option_values))
+	if(!g_Helloworld.ActiveRenderWindow<GL3Win32RenderWindow>()->LoadRenderWindow(option_values))
 	{
 		return FALSE;
 	}

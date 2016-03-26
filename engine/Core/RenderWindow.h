@@ -17,8 +17,11 @@ public:
 	virtual BOOL	LoadRenderWindow(const StringDictionaryT<ULONG_PTR>& option_values);
 	virtual	BOOL	DestroyRenderWindow();
 
-	virtual	BOOL	RenderBegin(RenderSystem* pRenderSystem){ return TRUE; };
-	virtual BOOL	RenderEnd(RenderSystem* pRenderSystem){ return TRUE; };
+	virtual BOOL	Update(RenderSystem* pRenderSystem);
+	
+protected:
+	virtual	BOOL	onRenderBegin(RenderSystem* pRenderSystem);
+	virtual BOOL	onRenderEnd(RenderSystem* pRenderSystem);
 
 protected:
 	float				m_fWidth;

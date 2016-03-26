@@ -1,7 +1,7 @@
 
 #include "Precompile.h"
 #include "RenderWindow.h"
-
+#include "RenderSystem.h"
 
 //
 RenderWindow::RenderWindow(void)
@@ -34,5 +34,28 @@ BOOL	RenderWindow::LoadRenderWindow(const StringDictionaryT<ULONG_PTR>& option_v
 	}
 
 	//
+	return TRUE;
+}
+
+BOOL	RenderWindow::Update(RenderSystem* pRenderSystem)
+{
+	if(this->onRenderBegin(pRenderSystem))
+	{
+		if(pRenderSystem){ pRenderSystem->Render(); }
+		
+		this->onRenderEnd(pRenderSystem);
+	}
+	return TRUE;
+}
+
+BOOL	RenderWindow::onRenderBegin(RenderSystem* pRenderSystem)
+{
+	if(!pRenderSystem){ return FALSE; }
+	
+	return TRUE;
+}
+
+BOOL	RenderWindow::onRenderEnd(RenderSystem* pRenderSystem)
+{
 	return TRUE;
 }

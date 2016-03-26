@@ -4,10 +4,10 @@
 #pragma once
 
 
-#include "win/RenderWindow_WIN.h"
+#include "RenderWindow.h"
 
 //
-class GL3RenderWindow	: public RenderWindow_WIN
+class GL3RenderWindow	: public RenderWindow
 {
 public:
 	GL3RenderWindow(void);
@@ -16,21 +16,22 @@ public:
 	virtual BOOL	LoadRenderWindow(const StringDictionaryT<ULONG_PTR>& option_values);
 	virtual	BOOL	DestroyRenderWindow();
 
-	virtual	BOOL	RenderBegin(RenderSystem* pRenderSystem);
-	virtual BOOL	RenderEnd(RenderSystem* pRenderSystem);
-
 protected:
-	virtual BOOL	InitializeOpenGL();
-	virtual VOID	ReleaseOpenGL();
+	virtual BOOL	InitializeOpenGL() = 0;
+	virtual VOID	ReleaseOpenGL() = 0;
 
+	virtual	BOOL	onRenderBegin(RenderSystem* pRenderSystem);
+	virtual BOOL	onRenderEnd(RenderSystem* pRenderSystem);
+	
 protected:
-	HDC						m_hDC;
-	PIXELFORMATDESCRIPTOR	m_PixelFormatDesc;
-
-	HGLRC					m_hGLRC;
-
+	//
 	float					m_fX;
 	float					m_fY;
+	
+	//
+	int						m_nColorBits;
+	int						m_nDepthBits;
+	int						m_nStencilBits;
 };
 
 

@@ -16,8 +16,9 @@ public:
 	RenderTarget(void);
 	virtual ~RenderTarget(void);
 
-	virtual	BOOL	RenderBegin(RenderSystem* pRenderSystem)	= 0;
-	virtual BOOL	RenderEnd(RenderSystem* pRenderSystem)		= 0;
+	virtual BOOL	Update(RenderSystem* pRenderSystem) = 0;
+	
+protected:
 };
 
 

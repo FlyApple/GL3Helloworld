@@ -100,12 +100,6 @@ VOID	Application::Rendering()
 {
 	if(m_pRenderWindow)
 	{
-		if(m_pRenderWindow->RenderBegin(m_pRenderSystem))
-		{
-			if(m_pRenderSystem)
-			{ m_pRenderSystem->Render(); }
-
-			m_pRenderWindow->RenderEnd(m_pRenderSystem);
-		}
+		m_pRenderWindow->Update(m_pRenderSystem);
 	}
 }

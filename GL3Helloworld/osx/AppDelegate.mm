@@ -7,12 +7,16 @@
 //
 
 #import "AppDelegate.h"
+
 #include "Precompile.h"
 
-#include "GL3Helloworld.h"
+#include "osx/GL3OSXRenderWindow.h"
 #include "GL3RenderSystem.h"
 
 #include "LogManager.h"
+
+#include "GL3Helloworld.h"
+
 
 //
 GL3Helloworld*		m_pHelloworld;
@@ -38,6 +42,7 @@ GL3Helloworld*		m_pHelloworld;
 	}
 	
 	m_pHelloworld = new GL3Helloworld();
+	m_pHelloworld->ActiveRenderWindow(new GL3OSXRenderWindow());
 	m_pHelloworld->ActiveRenderSystem(new GL3RenderSystem());
 	if(!m_pHelloworld->Initialize())
 	{

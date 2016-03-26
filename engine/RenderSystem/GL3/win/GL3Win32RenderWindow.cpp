@@ -1,26 +1,24 @@
 
 #include "Precompile.h"
 #include "GL3Precompile.h"
-#include "GL3RenderWindow.h"
+#include "GL3Win32RenderWindow.h"
 
 
 //
-GL3RenderWindow::GL3RenderWindow(void)
+GL3Win32RenderWindow::GL3Win32RenderWindow(void)
 {
+	m_hWnd		= NULL;
 	m_hDC		= NULL;
 	m_hGLRC		= NULL;
 	
 	ZeroMemory(&m_PixelFormatDesc, sizeof(PIXELFORMATDESCRIPTOR));
-
-	m_fX		= 0.0f;
-	m_fY		= 0.0f;
 }
 
-GL3RenderWindow::~GL3RenderWindow(void)
+GL3Win32RenderWindow::~GL3Win32RenderWindow(void)
 {
 }
 
-BOOL	GL3RenderWindow::DestroyRenderWindow()
+BOOL	GL3Win32RenderWindow::DestroyRenderWindow()
 {
 	ReleaseOpenGL();
 
@@ -29,12 +27,21 @@ BOOL	GL3RenderWindow::DestroyRenderWindow()
 		ReleaseDC(m_hWnd, m_hDC);
 		m_hDC = NULL;
 	}
-	return RenderWindow_WIN::DestroyRenderWindow();
+	return GL3RenderWindow::DestroyRenderWindow();
 }
 
-BOOL	GL3RenderWindow::LoadRenderWindow(const StringDictionaryT<ULONG_PTR>& option_values)
+BOOL	GL3Win32RenderWindow::LoadRenderWindow(const StringDictionaryT<ULONG_PTR>& option_values)
 {
-	if(!RenderWindow_WIN::LoadRenderWindow(option_values)){ return FALSE; }
+	if(!GL3RenderWindow::LoadRenderWindow(option_values)){ return FALSE; }
+
+	//
+	for(StringDictionaryT<ULONG_PTR>::const_iterator i = option_values.begin(); i != option_values.end(); i ++)
+	{
+		if(_tcsicmp(i->first.c_str(), _T("HANDLE")) == 0)
+		{
+			m_hWnd	= (HWND)i->second;
+		}
+	}
 
 	//
 	m_hDC		= GetDC(m_hWnd);
@@ -46,34 +53,10 @@ BOOL	GL3RenderWindow::LoadRenderWindow(const StringDictionaryT<ULONG_PTR>& optio
 	m_PixelFormatDesc.nVersion			= 1;
 	m_PixelFormatDesc.dwFlags			= PFD_DRAW_TO_WINDOW | PFD_SUPPORT_OPENGL | PFD_DOUBLEBUFFER;
 	m_PixelFormatDesc.iPixelType		= PFD_TYPE_RGBA;
-	m_PixelFormatDesc.cColorBits		= 32;
-	m_PixelFormatDesc.cDepthBits		= 16;
-	m_PixelFormatDesc.cStencilBits		= 1;
+	m_PixelFormatDesc.cColorBits		= (BYTE)m_nColorBits;
+	m_PixelFormatDesc.cDepthBits		= (BYTE)m_nDepthBits;
+	m_PixelFormatDesc.cStencilBits		= (BYTE)m_nStencilBits;
 	m_PixelFormatDesc.iLayerType		= PFD_MAIN_PLANE;	
-
-	for(StringDictionaryT<ULONG_PTR>::const_iterator i = option_values.begin(); i != option_values.end(); i ++)
-	{
-		if(_tcsicmp(i->first.c_str(), _T("ColorBits")) == 0)
-		{
-			m_PixelFormatDesc.cColorBits	= (BYTE)i->second;
-		}
-		else if(_tcsicmp(i->first.c_str(), _T("DepthBits")) == 0)
-		{
-			m_PixelFormatDesc.cDepthBits	= (BYTE)i->second;
-		}
-		else if(_tcsicmp(i->first.c_str(), _T("StencilBits")) == 0)
-		{
-			m_PixelFormatDesc.cStencilBits	= (BYTE)i->second;
-		}
-		else if(_tcsicmp(i->first.c_str(), _T("X")) == 0)
-		{
-			m_fX	= (float)i->second;
-		}
-		else if(_tcsicmp(i->first.c_str(), _T("Y")) == 0)
-		{
-			m_fY	= (float)i->second;
-		}
-	}
 
 	//
 	if(!InitializeOpenGL())
@@ -84,7 +67,7 @@ BOOL	GL3RenderWindow::LoadRenderWindow(const StringDictionaryT<ULONG_PTR>& optio
 	return TRUE;
 }
 
-VOID	GL3RenderWindow::ReleaseOpenGL()
+VOID	GL3Win32RenderWindow::ReleaseOpenGL()
 {
 	if(m_hGLRC)
 	{
@@ -95,7 +78,7 @@ VOID	GL3RenderWindow::ReleaseOpenGL()
 	}
 }
 
-BOOL	GL3RenderWindow::InitializeOpenGL()
+BOOL	GL3Win32RenderWindow::InitializeOpenGL()
 {
 	int nPixelFormat = ChoosePixelFormat(m_hDC, &m_PixelFormatDesc);
 	if(nPixelFormat == 0){ return FALSE; }
@@ -146,18 +129,17 @@ BOOL	GL3RenderWindow::InitializeOpenGL()
 }
 
 
-BOOL	GL3RenderWindow::RenderBegin(RenderSystem* pRenderSystem)
+BOOL	GL3Win32RenderWindow::onRenderBegin(RenderSystem* pRenderSystem)
 { 
-	if(!pRenderSystem){ return FALSE; }
+	if(!GL3RenderWindow::onRenderBegin(pRenderSystem))
+	{ return FALSE; }
 
 	//
-	glViewport((GLint)m_fX, (GLint)m_fY, (GLsizei)m_fWidth, (GLsizei)m_fHeight);
-
 	return TRUE; 
 }
 
-BOOL	GL3RenderWindow::RenderEnd(RenderSystem* pRenderSystem)
+BOOL	GL3Win32RenderWindow::onRenderEnd(RenderSystem* pRenderSystem)
 { 
 	SwapBuffers(m_hDC);
-	return TRUE; 
+	return GL3RenderWindow::onRenderEnd(pRenderSystem); 
 }

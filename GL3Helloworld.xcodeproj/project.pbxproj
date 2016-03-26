@@ -11,10 +11,12 @@
 		3B28ADDA1CA30A5900D67794 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B28ADD61CA30A5900D67794 /* Assets.xcassets */; };
 		3B28ADDC1CA30A5900D67794 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3B28ADD81CA30A5900D67794 /* AppDelegate.mm */; };
 		3B28ADE21CA30D9600D67794 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B28ADE01CA30D9600D67794 /* MainMenu.xib */; };
+		3B2FEC811CA6E721004DDD11 /* GL3OSXRenderWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B2FEC801CA6E721004DDD11 /* GL3OSXRenderWindow.cpp */; };
 		3B54A7B81CA317AC008D1C11 /* Application.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B54A7B71CA317AC008D1C11 /* Application.cpp */; };
 		3B5B29421CA5E2A100487761 /* GL3Context3D.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3B5B29401CA5E2A100487761 /* GL3Context3D.mm */; };
 		3B5B29431CA5E2A100487761 /* GL3RenderView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3B5B29411CA5E2A100487761 /* GL3RenderView.mm */; };
-		3B5B294A1CA5E45900487761 /* View3D.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5B29471CA5E45900487761 /* View3D.m */; };
+		3B5B294A1CA5E45900487761 /* View3D.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3B5B29471CA5E45900487761 /* View3D.mm */; };
+		3B5B294D1CA6D80500487761 /* GL3RenderWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B5B294C1CA6D80500487761 /* GL3RenderWindow.cpp */; };
 		3BCA55801CA4505700C9144C /* LogManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3BCA55781CA4505700C9144C /* LogManager.cpp */; };
 		3BCA55811CA4505700C9144C /* RenderSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3BCA557A1CA4505700C9144C /* RenderSystem.cpp */; };
 		3BCA55821CA4505700C9144C /* RenderTarget.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3BCA557C1CA4505700C9144C /* RenderTarget.cpp */; };
@@ -34,6 +36,8 @@
 		3B28ADD81CA30A5900D67794 /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = osx/AppDelegate.mm; sourceTree = "<group>"; };
 		3B28ADD91CA30A5900D67794 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = osx/Info.plist; sourceTree = "<group>"; };
 		3B28ADE11CA30D9600D67794 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = osx/Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		3B2FEC7F1CA6E721004DDD11 /* GL3OSXRenderWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GL3OSXRenderWindow.h; path = engine/RenderSystem/GL3/osx/GL3OSXRenderWindow.h; sourceTree = "<group>"; };
+		3B2FEC801CA6E721004DDD11 /* GL3OSXRenderWindow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GL3OSXRenderWindow.cpp; path = engine/RenderSystem/GL3/osx/GL3OSXRenderWindow.cpp; sourceTree = "<group>"; };
 		3B54A7B41CA31490008D1C11 /* Precompile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Precompile.h; path = engine/Core/Precompile.h; sourceTree = "<group>"; };
 		3B54A7B51CA31681008D1C11 /* Singleton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Singleton.h; path = engine/Core/Singleton.h; sourceTree = "<group>"; };
 		3B54A7B61CA317AC008D1C11 /* Application.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Application.h; path = engine/Core/Application.h; sourceTree = "<group>"; };
@@ -44,7 +48,9 @@
 		3B5B29401CA5E2A100487761 /* GL3Context3D.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = GL3Context3D.mm; path = engine/RenderSystem/GL3/osx/GL3Context3D.mm; sourceTree = "<group>"; };
 		3B5B29411CA5E2A100487761 /* GL3RenderView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = GL3RenderView.mm; path = engine/RenderSystem/GL3/osx/GL3RenderView.mm; sourceTree = "<group>"; };
 		3B5B29441CA5E45900487761 /* View3D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = View3D.h; path = osx/View3D.h; sourceTree = "<group>"; };
-		3B5B29471CA5E45900487761 /* View3D.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = View3D.m; path = osx/View3D.m; sourceTree = "<group>"; };
+		3B5B29471CA5E45900487761 /* View3D.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = View3D.mm; path = osx/View3D.mm; sourceTree = "<group>"; };
+		3B5B294B1CA6D80500487761 /* GL3RenderWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GL3RenderWindow.h; path = engine/RenderSystem/GL3/GL3RenderWindow.h; sourceTree = "<group>"; };
+		3B5B294C1CA6D80500487761 /* GL3RenderWindow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GL3RenderWindow.cpp; path = engine/RenderSystem/GL3/GL3RenderWindow.cpp; sourceTree = "<group>"; };
 		3BCA55771CA4505700C9144C /* CoreBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreBase.h; path = engine/Core/CoreBase.h; sourceTree = "<group>"; };
 		3BCA55781CA4505700C9144C /* LogManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LogManager.cpp; path = engine/Core/LogManager.cpp; sourceTree = "<group>"; };
 		3BCA55791CA4505700C9144C /* LogManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LogManager.h; path = engine/Core/LogManager.h; sourceTree = "<group>"; };
@@ -99,13 +105,13 @@
 		3B28ADC11CA3000500D67794 /* GL3Helloworld */ = {
 			isa = PBXGroup;
 			children = (
-				3B5B29441CA5E45900487761 /* View3D.h */,
-				3B5B29471CA5E45900487761 /* View3D.m */,
-				3B28ADE01CA30D9600D67794 /* MainMenu.xib */,
 				3B28ADD51CA30A5900D67794 /* AppDelegate.h */,
-				3B28ADD61CA30A5900D67794 /* Assets.xcassets */,
+				3B5B29441CA5E45900487761 /* View3D.h */,
+				3B5B29471CA5E45900487761 /* View3D.mm */,
 				3B28ADD81CA30A5900D67794 /* AppDelegate.mm */,
 				3B28ADD91CA30A5900D67794 /* Info.plist */,
+				3B28ADD61CA30A5900D67794 /* Assets.xcassets */,
+				3B28ADE01CA30D9600D67794 /* MainMenu.xib */,
 				3B28ADC51CA3000600D67794 /* Supporting Files */,
 			);
 			path = GL3Helloworld;
@@ -164,6 +170,8 @@
 		3B5B293D1CA5E28D00487761 /* osx */ = {
 			isa = PBXGroup;
 			children = (
+				3B2FEC7F1CA6E721004DDD11 /* GL3OSXRenderWindow.h */,
+				3B2FEC801CA6E721004DDD11 /* GL3OSXRenderWindow.cpp */,
 				3B5B293E1CA5E2A100487761 /* GL3Context3D.h */,
 				3B5B29401CA5E2A100487761 /* GL3Context3D.mm */,
 				3B5B293F1CA5E2A100487761 /* GL3RenderView.h */,
@@ -196,10 +204,12 @@
 		3BFC6BCB1CA4791D0047A11F /* GL3 */ = {
 			isa = PBXGroup;
 			children = (
-				3B5B293D1CA5E28D00487761 /* osx */,
 				3BFC6BCC1CA479330047A11F /* GL3Precompile.h */,
-				3BFC6BCD1CA479330047A11F /* GL3RenderSystem.h */,
 				3BFC6BCE1CA479330047A11F /* GL3RenderSystem.cpp */,
+				3BFC6BCD1CA479330047A11F /* GL3RenderSystem.h */,
+				3B5B294C1CA6D80500487761 /* GL3RenderWindow.cpp */,
+				3B5B294B1CA6D80500487761 /* GL3RenderWindow.h */,
+				3B5B293D1CA5E28D00487761 /* osx */,
 			);
 			name = GL3;
 			sourceTree = "<group>";
@@ -275,11 +285,13 @@
 			files = (
 				3BCA55811CA4505700C9144C /* RenderSystem.cpp in Sources */,
 				3BFC6BD21CA479970047A11F /* GL3Helloworld.cpp in Sources */,
+				3B2FEC811CA6E721004DDD11 /* GL3OSXRenderWindow.cpp in Sources */,
+				3B5B294D1CA6D80500487761 /* GL3RenderWindow.cpp in Sources */,
 				3BCA55801CA4505700C9144C /* LogManager.cpp in Sources */,
 				3B28ADDC1CA30A5900D67794 /* AppDelegate.mm in Sources */,
 				3B28ADD41CA30A4D00D67794 /* main.m in Sources */,
 				3BFC6BD41CA47C7B0047A11F /* OSXApplicationMain.m in Sources */,
-				3B5B294A1CA5E45900487761 /* View3D.m in Sources */,
+				3B5B294A1CA5E45900487761 /* View3D.mm in Sources */,
 				3BFC6BD81CA480300047A11F /* OSXApplicationDelegate.mm in Sources */,
 				3B5B29431CA5E2A100487761 /* GL3RenderView.mm in Sources */,
 				3BCA55821CA4505700C9144C /* RenderTarget.cpp in Sources */,
