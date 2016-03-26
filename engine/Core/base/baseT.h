@@ -35,5 +35,12 @@ typedef int							LONG_PTR;
 typedef unsigned int				ULONG_PTR;
 #endif
 
+//gnuc 4.2.0 使用C++ 11.
+#if (__GNUC__ >= 4) && (__GNUC_MINOR__ >= 2) && (__GNUC_PATCHLEVEL__ >= 0)
+#define _countof(a)					(std::extent<decltype(a)>::value)
+#else
+#define _countof(a)					(sizeof(a)/sizeof((a)[0]))
+#endif
 
+//
 #endif /* __baseT_H__ */

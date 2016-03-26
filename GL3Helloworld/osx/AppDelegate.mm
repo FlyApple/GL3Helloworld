@@ -51,8 +51,8 @@ GL3Helloworld*		m_pHelloworld;
 	}
 	
 	//
-//	LogManager::getSingleton().LogMessage(_T("<") + StringAToStringT(__FUNCTION__) + _T(">") +
-//										  _T(" Application 初始化完成了..."));
+//	LogManager::getSingleton().LogMessage(LML_NORMAL, false, _T("<%S> Application 初始化完成了..."),
+//										  StringAToStringT(__FUNCTION__).c_str());
 	return true;
 }
 

@@ -104,9 +104,9 @@ public:
 	void			SetLogDetail(LogContentLevel lcl);
 
 	void			LogMessage( const StringT& message, LogMessageLevel lml = LML_NORMAL, bool mask_debug = false);
-	void			LogMessage( LogMessageLevel lml, const StringT& message, bool mask_debug = false) 
-	{ this->LogMessage(message, lml, mask_debug); }
-
+	void			LogMessage( LogMessageLevel lml, const StringT& message, bool mask_debug = false);
+	void			LogMessage( LogMessageLevel lml, bool mask_debug, const TCHAR* format, ...);
+	
 protected:
 	typedef std::map<StringT, Log*>		LogList;
 
@@ -117,6 +117,29 @@ protected:
 	Log*		m_pDefaultLog;
 };
 
+//
+__inline void		LogManager::LogMessage( LogMessageLevel lml, const StringT& message, bool mask_debug)
+{
+	this->LogMessage(message, lml, mask_debug);
+}
+
+__inline void		LogManager::LogMessage( LogMessageLevel lml, bool mask_debug, const TCHAR* format, ...)
+{
+	TCHAR	szText[256] = {0, };
+	
+#ifdef _UNICODE
+	StringT stringFormat = StringReplaceT(format, _T("%s"), _T("%S"));
+#else
+	StringT stringFormat = StringReplaceT(format, _T("%S"), _T("%s"));
+#endif
+	
+	va_list val;
+	va_start(val, format);
+	_vstprintf(szText, stringFormat.c_str(), val);
+	va_end(val);
+	
+	this->LogMessage(szText, lml, mask_debug);
+}
 
 //
 #endif /* __MXE_LogManager_H__ */

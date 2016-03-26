@@ -168,7 +168,6 @@ __inline StringT StringWToStringT(StringW str)
 #endif
 }
 
-
 #endif
 
 //
@@ -202,6 +201,18 @@ __inline StringT StringToUpper(StringT str)
 {
 	StringT result = str;
 	std::transform(result.begin(), result.end(), result.begin(), toupper);
+	return result;
+}
+
+__inline StringT StringReplaceT(StringT str, StringT A, StringT B)
+{
+	StringT result = str;
+	for(StringT::size_type pos = 0; pos != StringT::npos; pos += B.length())
+	{
+		pos = result.find(A, pos);
+		if(pos != StringT::npos){ result.replace(pos, A.length(), B); }
+		else{ break; }
+	}
 	return result;
 }
 

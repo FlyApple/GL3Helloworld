@@ -24,7 +24,10 @@ protected:
 	virtual BOOL	onRenderEnd(RenderSystem* pRenderSystem);
 	
 protected:
-
+	
+	//
+	CGLPixelFormatObj	m_pPixelFormatObj;
+	CGLContextObj		m_pContextObj;
 };
 
 
