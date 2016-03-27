@@ -7,6 +7,9 @@
 #include "RenderSystem.h"
 
 //
+class GL3DeviceManager;
+
+//
 class GL3RenderSystem	: public RenderSystem
 {
 public:
@@ -17,6 +20,9 @@ public:
 	virtual void	Release();
 
 	virtual VOID	Render();
+	
+private:
+	GL3DeviceManager*		m_pDeviceManager;
 };
 
 
