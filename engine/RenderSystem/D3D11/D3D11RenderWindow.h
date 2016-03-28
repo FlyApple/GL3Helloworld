@@ -20,8 +20,8 @@ protected:
 	virtual BOOL	InitializeD3D11();
 	virtual VOID	ReleaseD3D11();
 
-	virtual	BOOL	onRenderBegin(RenderSystem* pRenderSystem);
-	virtual BOOL	onRenderEnd(RenderSystem* pRenderSystem);
+	virtual BOOL	update();
+	virtual VOID	flush();
 	
 protected:
 	//

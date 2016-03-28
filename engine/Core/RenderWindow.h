@@ -19,11 +19,8 @@ public:
 
 	virtual VOID	Resize(float width, float height);
 	
-	virtual BOOL	Update(RenderSystem* pRenderSystem);
-	
-protected:
-	virtual	BOOL	onRenderBegin(RenderSystem* pRenderSystem);
-	virtual BOOL	onRenderEnd(RenderSystem* pRenderSystem);
+	virtual BOOL	update();
+	virtual VOID	flush();
 
 protected:
 	float				m_fWidth;

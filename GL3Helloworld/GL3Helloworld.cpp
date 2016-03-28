@@ -42,7 +42,7 @@ BOOL	GL3Helloworld::InitInstance()
 	if(!Application::InitInstance())
 	{ return FALSE; }
 
-	if(!m_pRenderSystem || !m_pRenderSystem->Initialize())
+	if(!m_pActiveRenderSystem || !m_pActiveRenderSystem->Initialize())
 	{ return FALSE; }
 
 	return TRUE;

@@ -65,9 +65,9 @@ BOOL	GL3RenderWindow::LoadRenderWindow(const StringDictionaryT<ULONG_PTR>& optio
 	return TRUE;
 }
 
-BOOL	GL3RenderWindow::onRenderBegin(RenderSystem* pRenderSystem)
+BOOL	GL3RenderWindow::update()
 { 
-	if(!RenderWindow::onRenderBegin(pRenderSystem))
+	if(!RenderWindow::update())
 	{ return FALSE; }
 
 	//
@@ -77,8 +77,8 @@ BOOL	GL3RenderWindow::onRenderBegin(RenderSystem* pRenderSystem)
 	return TRUE; 
 }
 
-BOOL	GL3RenderWindow::onRenderEnd(RenderSystem* pRenderSystem)
+VOID	GL3RenderWindow::flush()
 {
 	//
-	return RenderWindow::onRenderEnd(pRenderSystem);
+	RenderWindow::flush();
 }

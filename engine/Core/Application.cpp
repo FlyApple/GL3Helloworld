@@ -35,8 +35,8 @@ Application::Application(const StringT& stringLogFileName)
 	}
 
 	//
-	m_pRenderWindow		= NULL;
-	m_pRenderSystem		= NULL;
+	m_pActiveRenderWindow		= NULL;
+	m_pActiveRenderSystem		= NULL;
 
 
 	//
@@ -54,8 +54,8 @@ Application::~Application()
 void	Application::Release()
 {
 	//
-	MXE_DELETE_POINTER(m_pRenderSystem);
-	MXE_DELETE_POINTER(m_pRenderWindow);
+	MXE_DELETE_POINTER(m_pActiveRenderSystem);
+	MXE_DELETE_POINTER(m_pActiveRenderWindow);
 
 	//
 	LogManager::getSingleton().LogMessage(_T("--------- [Magic X Engine] Release ----------"));
@@ -71,11 +71,11 @@ bool	Application::Initialize()
 
 BOOL	Application::ExitInstance()
 {
-	if(m_pRenderSystem)
-	{ m_pRenderSystem->Release(); }
+	if(m_pActiveRenderSystem)
+	{ m_pActiveRenderSystem->Release(); }
 
-	if(m_pRenderWindow)
-	{ m_pRenderWindow->DestroyRenderWindow(); }
+	if(m_pActiveRenderWindow)
+	{ m_pActiveRenderWindow->DestroyRenderWindow(); }
 
 	return TRUE;
 }
@@ -87,20 +87,21 @@ BOOL	Application::InitInstance()
 
 BOOL	Application::ActiveRenderWindow(RenderWindow* pRenderWindow)
 {
-	m_pRenderWindow	= pRenderWindow;
+	m_pActiveRenderWindow	= pRenderWindow;
 	return TRUE;
 }
 
 BOOL	Application::ActiveRenderSystem(RenderSystem* pRenderSystem)
 {
-	m_pRenderSystem	= pRenderSystem;
+	m_pActiveRenderSystem	= pRenderSystem;
 	return TRUE;
 }
 
 VOID	Application::Rendering()
 {
-	if(m_pRenderWindow)
+	if(m_pActiveRenderWindow)
 	{
-		m_pRenderWindow->Update(m_pRenderSystem);
+		if(m_pActiveRenderWindow->update())
+		{ m_pActiveRenderWindow->flush(); }
 	}
 }

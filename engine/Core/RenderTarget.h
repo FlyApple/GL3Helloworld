@@ -7,7 +7,7 @@
 #include "CoreBase.h"
 
 //
-class RenderSystem;
+class Viewport;
 
 //
 class RenderTarget	: public CoreClass
@@ -16,9 +16,14 @@ public:
 	RenderTarget(void);
 	virtual ~RenderTarget(void);
 
-	virtual BOOL	Update(RenderSystem* pRenderSystem) = 0;
-	
+	virtual BOOL	update()	= 0;
+	virtual VOID	flush()		= 0;
+
 protected:
+	virtual	VOID	updateViewport();
+
+protected:
+	Viewport*		m_pViewport;
 };
 
 

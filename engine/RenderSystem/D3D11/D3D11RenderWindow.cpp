@@ -240,9 +240,9 @@ BOOL	D3D11RenderWindow::InitializeD3D11()
 	return TRUE;
 }
 
-BOOL	D3D11RenderWindow::onRenderBegin(RenderSystem* pRenderSystem)
+BOOL	D3D11RenderWindow::update()
 { 
-	if(!RenderWindow::onRenderBegin(pRenderSystem))
+	if(!RenderWindow::update())
 	{ return FALSE; }
 
 	// 初始化视口:
@@ -259,7 +259,7 @@ BOOL	D3D11RenderWindow::onRenderBegin(RenderSystem* pRenderSystem)
 	return TRUE; 
 }
 
-BOOL	D3D11RenderWindow::onRenderEnd(RenderSystem* pRenderSystem)
+VOID	D3D11RenderWindow::flush()
 {
 	if(m_pSwapChain)
 	{
@@ -267,5 +267,5 @@ BOOL	D3D11RenderWindow::onRenderEnd(RenderSystem* pRenderSystem)
 	}
 
 	//
-	return RenderWindow::onRenderEnd(pRenderSystem);
+	RenderWindow::flush();
 }

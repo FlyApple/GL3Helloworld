@@ -20,8 +20,8 @@ protected:
 	virtual BOOL	InitializeOpenGL();
 	virtual VOID	ReleaseOpenGL();
 
-	virtual	BOOL	onRenderBegin(RenderSystem* pRenderSystem);
-	virtual BOOL	onRenderEnd(RenderSystem* pRenderSystem);
+	virtual BOOL	update();
+	virtual VOID	flush();
 	
 protected:
 	HWND					m_hWnd;

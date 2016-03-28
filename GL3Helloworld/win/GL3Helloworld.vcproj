@@ -439,6 +439,14 @@
 					RelativePath="..\..\engine\Core\Singleton.h"
 					>
 				</File>
+				<File
+					RelativePath="..\..\engine\Core\Viewport.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\engine\Core\Viewport.h"
+					>
+				</File>
 				<Filter
 					Name="win"
 					>

@@ -127,17 +127,18 @@ BOOL	GL3Win32RenderWindow::InitializeOpenGL()
 }
 
 
-BOOL	GL3Win32RenderWindow::onRenderBegin(RenderSystem* pRenderSystem)
+BOOL	GL3Win32RenderWindow::update()
 { 
-	if(!GL3RenderWindow::onRenderBegin(pRenderSystem))
+	if(!GL3RenderWindow::update())
 	{ return FALSE; }
 
 	//
 	return TRUE; 
 }
 
-BOOL	GL3Win32RenderWindow::onRenderEnd(RenderSystem* pRenderSystem)
+VOID	GL3Win32RenderWindow::flush()
 { 
+	GL3RenderWindow::flush(); 
+
 	SwapBuffers(m_hDC);
-	return GL3RenderWindow::onRenderEnd(pRenderSystem); 
 }

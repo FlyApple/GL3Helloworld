@@ -43,25 +43,13 @@ VOID	RenderWindow::Resize(float width, float height)
 	this->m_fHeight		= height;
 }
 
-BOOL	RenderWindow::Update(RenderSystem* pRenderSystem)
+BOOL	RenderWindow::update()
 {
-	if(this->onRenderBegin(pRenderSystem))
-	{
-		if(pRenderSystem){ pRenderSystem->Render(); }
-		
-		this->onRenderEnd(pRenderSystem);
-	}
 	return TRUE;
 }
 
-BOOL	RenderWindow::onRenderBegin(RenderSystem* pRenderSystem)
+VOID	RenderWindow::flush()
 {
-	if(!pRenderSystem){ return FALSE; }
-	
-	return TRUE;
+	this->updateViewport();
 }
 
-BOOL	RenderWindow::onRenderEnd(RenderSystem* pRenderSystem)
-{
-	return TRUE;
-}

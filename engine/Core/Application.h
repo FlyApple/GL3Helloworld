@@ -41,14 +41,14 @@ private:
 
 public:
 	BOOL					ActiveRenderWindow(RenderWindow* pRenderWindow);
-	template<typename Ty>	Ty*		ActiveRenderWindow(){ return reinterpret_cast<Ty*>(m_pRenderWindow); }
+	template<typename Ty>	Ty*		ActiveRenderWindow(){ return reinterpret_cast<Ty*>(m_pActiveRenderWindow); }
 
 	BOOL					ActiveRenderSystem(RenderSystem* pRenderSystem);
-	template<typename Ty>	Ty*		ActiveRenderSystem(){ return reinterpret_cast<Ty*>(m_pRenderSystem); }
+	template<typename Ty>	Ty*		ActiveRenderSystem(){ return reinterpret_cast<Ty*>(m_pActiveRenderSystem); }
 
 protected:
-	RenderWindow*			m_pRenderWindow;
-	RenderSystem*			m_pRenderSystem;
+	RenderWindow*			m_pActiveRenderWindow;
+	RenderSystem*			m_pActiveRenderSystem;
 };
 
 #endif /* __MXE_Application_H__ */
