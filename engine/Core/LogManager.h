@@ -126,13 +126,17 @@ __inline void		LogManager::LogMessage( LogMessageLevel lml, const StringT& messa
 __inline void		LogManager::LogMessage( LogMessageLevel lml, bool mask_debug, const TCHAR* format, ...)
 {
 	TCHAR	szText[256] = {0, };
-	
+
+#if defined (_PLATFORM_WINDOW_)	
+	StringT stringFormat = format;
+#else
 #ifdef _UNICODE
 	StringT stringFormat = StringReplaceT(format, _T("%s"), _T("%S"));
 #else
 	StringT stringFormat = StringReplaceT(format, _T("%S"), _T("%s"));
 #endif
-	
+#endif	
+
 	va_list val;
 	va_start(val, format);
 	_vstprintf(szText, stringFormat.c_str(), val);

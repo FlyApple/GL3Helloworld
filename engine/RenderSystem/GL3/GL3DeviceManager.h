@@ -16,7 +16,17 @@
 #include "CoreBase.h"
 
 //
-class GL3Device
+class VideoDevice
+{
+public:
+	bool			m_bActive;
+	StringT			m_stringID;
+	StringT			m_stringName;
+	StringT			m_stringDesc;
+};
+
+//
+class GL3Device : public VideoDevice
 {
 public:
 	StringT			m_stringVersion;
@@ -40,6 +50,9 @@ public:
 	
 	VOID			PrintDeviceInformation(GL3Device* pDevice = NULL);
 	
+private:
+	VOID			EnumDevices();
+
 private:
 	GL3Device*		m_pCurrentDevice;
 	GL3DeviceArray	m_DeviceList;

@@ -30,6 +30,7 @@ Application::Application(const StringT& stringLogFileName)
 		else
 		{
 			throw _T("<LogManager> Initialize error.");
+			return;
 		}
 	}
 
@@ -76,7 +77,7 @@ BOOL	Application::ExitInstance()
 	if(m_pRenderWindow)
 	{ m_pRenderWindow->DestroyRenderWindow(); }
 
-	return FALSE;
+	return TRUE;
 }
 
 BOOL	Application::InitInstance()

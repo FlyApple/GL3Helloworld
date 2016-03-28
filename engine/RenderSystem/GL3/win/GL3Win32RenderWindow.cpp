@@ -33,8 +33,6 @@ BOOL	GL3Win32RenderWindow::DestroyRenderWindow()
 
 BOOL	GL3Win32RenderWindow::LoadRenderWindow(const StringDictionaryT<ULONG_PTR>& option_values)
 {
-	if(!GL3RenderWindow::LoadRenderWindow(option_values)){ return FALSE; }
-
 	//
 	for(StringDictionaryT<ULONG_PTR>::const_iterator i = option_values.begin(); i != option_values.end(); i ++)
 	{
@@ -49,22 +47,10 @@ BOOL	GL3Win32RenderWindow::LoadRenderWindow(const StringDictionaryT<ULONG_PTR>& 
 	if(!m_hDC){ return FALSE; }
 
 	//
-	ZeroMemory(&m_PixelFormatDesc, sizeof(PIXELFORMATDESCRIPTOR));
-	m_PixelFormatDesc.nSize				= sizeof(PIXELFORMATDESCRIPTOR);
-	m_PixelFormatDesc.nVersion			= 1;
-	m_PixelFormatDesc.dwFlags			= PFD_DRAW_TO_WINDOW | PFD_SUPPORT_OPENGL | PFD_DOUBLEBUFFER;
-	m_PixelFormatDesc.iPixelType		= PFD_TYPE_RGBA;
-	m_PixelFormatDesc.cColorBits		= (BYTE)m_nColorBits;
-	m_PixelFormatDesc.cDepthBits		= (BYTE)m_nDepthBits;
-	m_PixelFormatDesc.cStencilBits		= (BYTE)m_nStencilBits;
-	m_PixelFormatDesc.iLayerType		= PFD_MAIN_PLANE;	
+	if(!GL3RenderWindow::LoadRenderWindow(option_values))
+	{ return FALSE; }
 
 	//
-	if(!InitializeOpenGL())
-	{
-		return FALSE;
-	}
-
 	return TRUE;
 }
 
@@ -81,6 +67,17 @@ VOID	GL3Win32RenderWindow::ReleaseOpenGL()
 
 BOOL	GL3Win32RenderWindow::InitializeOpenGL()
 {
+	//
+	ZeroMemory(&m_PixelFormatDesc, sizeof(PIXELFORMATDESCRIPTOR));
+	m_PixelFormatDesc.nSize				= sizeof(PIXELFORMATDESCRIPTOR);
+	m_PixelFormatDesc.nVersion			= 1;
+	m_PixelFormatDesc.dwFlags			= PFD_DRAW_TO_WINDOW | PFD_SUPPORT_OPENGL | PFD_DOUBLEBUFFER;
+	m_PixelFormatDesc.iPixelType		= PFD_TYPE_RGBA;
+	m_PixelFormatDesc.cColorBits		= (BYTE)m_nColorBits;
+	m_PixelFormatDesc.cDepthBits		= (BYTE)m_nDepthBits;
+	m_PixelFormatDesc.cStencilBits		= (BYTE)m_nStencilBits;
+	m_PixelFormatDesc.iLayerType		= PFD_MAIN_PLANE;	
+
 	int nPixelFormat = ChoosePixelFormat(m_hDC, &m_PixelFormatDesc);
 	if(nPixelFormat == 0){ return FALSE; }
 

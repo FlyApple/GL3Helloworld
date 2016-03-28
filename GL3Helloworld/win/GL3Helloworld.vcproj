@@ -44,7 +44,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="../../engine/core;../../engine/rendersystem/gl3"
+				AdditionalIncludeDirectories="../../engine/core;../../engine/rendersystem/gl3;../../engine/rendersystem/d3d11;../../engine/_3rdparty/win/include"
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -52,6 +52,7 @@
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
 				DebugInformationFormat="4"
+				DisableSpecificWarnings="4819"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -65,6 +66,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				LinkIncremental="2"
+				AdditionalLibraryDirectories="../../engine/_3rdparty/win/lib/x32"
 				GenerateDebugInformation="true"
 				SubSystem="2"
 				RandomizedBaseAddress="1"
@@ -118,7 +120,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="../../engine/core;../../engine/rendersystem/gl3"
+				AdditionalIncludeDirectories="../../engine/core;../../engine/rendersystem/gl3;../../engine/rendersystem/d3d11;../../engine/_3rdparty/win/include"
 				PreprocessorDefinitions="WIN32;_WIN64;_DEBUG;_WINDOWS"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -126,6 +128,7 @@
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
 				DebugInformationFormat="3"
+				DisableSpecificWarnings="4819"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -139,6 +142,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				LinkIncremental="2"
+				AdditionalLibraryDirectories="../../engine/_3rdparty/win/lib/x64"
 				GenerateDebugInformation="true"
 				SubSystem="2"
 				RandomizedBaseAddress="1"
@@ -193,13 +197,14 @@
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
-				AdditionalIncludeDirectories="../../engine/core;../../engine/rendersystem/gl3"
+				AdditionalIncludeDirectories="../../engine/core;../../engine/rendersystem/gl3;../../engine/rendersystem/d3d11;../../engine/_3rdparty/win/include"
 				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
 				DebugInformationFormat="3"
+				DisableSpecificWarnings="4819"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -213,6 +218,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				LinkIncremental="1"
+				AdditionalLibraryDirectories="../../engine/_3rdparty/win/lib/x32"
 				GenerateDebugInformation="true"
 				SubSystem="2"
 				OptimizeReferences="2"
@@ -270,13 +276,14 @@
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
-				AdditionalIncludeDirectories="../../engine/core;../../engine/rendersystem/gl3"
+				AdditionalIncludeDirectories="../../engine/core;../../engine/rendersystem/gl3;../../engine/rendersystem/d3d11;../../engine/_3rdparty/win/include"
 				PreprocessorDefinitions="WIN32;_WIN64;NDEBUG;_WINDOWS"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
 				DebugInformationFormat="3"
+				DisableSpecificWarnings="4819"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -290,6 +297,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				LinkIncremental="1"
+				AdditionalLibraryDirectories="../../engine/_3rdparty/win/lib/x64"
 				GenerateDebugInformation="true"
 				SubSystem="2"
 				OptimizeReferences="2"
@@ -434,14 +442,6 @@
 				<Filter
 					Name="win"
 					>
-					<File
-						RelativePath="..\..\engine\Core\win\RenderWindow_WIN.cpp"
-						>
-					</File>
-					<File
-						RelativePath="..\..\engine\Core\win\RenderWindow_WIN.h"
-						>
-					</File>
 				</Filter>
 			</Filter>
 			<Filter
@@ -450,6 +450,14 @@
 				<Filter
 					Name="GL3"
 					>
+					<File
+						RelativePath="..\..\engine\RenderSystem\GL3\GL3DeviceManager.cpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\engine\RenderSystem\GL3\GL3DeviceManager.h"
+						>
+					</File>
 					<File
 						RelativePath="..\..\engine\RenderSystem\GL3\GL3Precompile.h"
 						>
@@ -460,6 +468,14 @@
 					</File>
 					<File
 						RelativePath="..\..\engine\RenderSystem\GL3\GL3RenderSystem.h"
+						>
+					</File>
+					<File
+						RelativePath="..\..\engine\RenderSystem\GL3\GL3RenderWindow.cpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\engine\RenderSystem\GL3\GL3RenderWindow.h"
 						>
 					</File>
 					<Filter
@@ -474,14 +490,38 @@
 						Name="win"
 						>
 						<File
-							RelativePath="..\..\engine\RenderSystem\GL3\win\GL3RenderWindow.cpp"
+							RelativePath="..\..\engine\RenderSystem\GL3\win\GL3Win32RenderWindow.cpp"
 							>
 						</File>
 						<File
-							RelativePath="..\..\engine\RenderSystem\GL3\win\GL3RenderWindow.h"
+							RelativePath="..\..\engine\RenderSystem\GL3\win\GL3Win32RenderWindow.h"
 							>
 						</File>
 					</Filter>
+				</Filter>
+				<Filter
+					Name="D3D11"
+					>
+					<File
+						RelativePath="..\..\engine\RenderSystem\D3D11\D3D11Precompile.h"
+						>
+					</File>
+					<File
+						RelativePath="..\..\engine\RenderSystem\D3D11\D3D11RenderSystem.cpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\engine\RenderSystem\D3D11\D3D11RenderSystem.h"
+						>
+					</File>
+					<File
+						RelativePath="..\..\engine\RenderSystem\D3D11\D3D11RenderWindow.cpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\engine\RenderSystem\D3D11\D3D11RenderWindow.h"
+						>
+					</File>
 				</Filter>
 			</Filter>
 		</Filter>

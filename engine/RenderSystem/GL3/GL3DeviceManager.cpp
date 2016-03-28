@@ -41,8 +41,17 @@ void	GL3DeviceManager::Release()
 bool	GL3DeviceManager::Initialize()
 {
 	//
+	this->EnumDevices();
+
+	//
+	GL3Device*		device	= NULL;
+	if(m_pCurrentDevice == NULL)
+	{ device = new GL3Device(); }
+	else
+	{ device = m_pCurrentDevice; }
+
+	//
 	const char*		desc	= NULL;
-	GL3Device*		device	= new GL3Device();
 	device->m_stringVersion			= !(desc = (const char*)glGetString(GL_VERSION)) ? _T("") : StringAToStringT(desc);
 	device->m_stringVendor			= !(desc = (const char*)glGetString(GL_VENDOR)) ? _T("") : StringAToStringT(desc);
 	device->m_stringRenderer		= !(desc = (const char*)glGetString(GL_RENDERER)) ? _T("") : StringAToStringT(desc);
@@ -59,10 +68,12 @@ bool	GL3DeviceManager::Initialize()
 	
 	//
 	if(!m_pCurrentDevice)
-	{ m_pCurrentDevice = device; }
+	{ 
+		m_pCurrentDevice = device; 	
+		m_DeviceList.push_back(device);
+	}
 	
 	//
-	m_DeviceList.push_back(device);
 	return true;
 }
 
@@ -72,16 +83,67 @@ VOID	GL3DeviceManager::PrintDeviceInformation(GL3Device* pDevice)
 	if(pDevice == NULL){ return; }
 	
 	//
-	LogManager::getSingleton().LogMessage(_T("[GL3DeviceManager] OpenGL version ") + pDevice->m_stringVersion);
-	LogManager::getSingleton().LogMessage(_T("[GL3DeviceManager] OpenGL vendor ") + pDevice->m_stringVendor);
-	LogManager::getSingleton().LogMessage(_T("[GL3DeviceManager] OpenGL renderer ") + pDevice->m_stringRenderer);
-	LogManager::getSingleton().LogMessage(_T("[GL3DeviceManager] OpenGL GLSL Version ") + pDevice->m_stringShadingLanguage);
-	LogManager::getSingleton().LogMessage(LML_NORMAL, false, _T("[GL3DeviceManager] OpenGL extensions count %d"),
+	LogManager::getSingleton().LogMessage(_T("[GL3DeviceManager] OpenGL version: ") + pDevice->m_stringVersion);
+	LogManager::getSingleton().LogMessage(_T("[GL3DeviceManager] OpenGL vendor: ") + pDevice->m_stringVendor);
+	LogManager::getSingleton().LogMessage(_T("[GL3DeviceManager] OpenGL renderer: ") + pDevice->m_stringRenderer);
+	LogManager::getSingleton().LogMessage(_T("[GL3DeviceManager] OpenGL GLSL Version: ") + pDevice->m_stringShadingLanguage);
+	LogManager::getSingleton().LogMessage(LML_NORMAL, false, _T("[GL3DeviceManager] OpenGL extensions count %d:"),
 										  pDevice->m_stringExtensions.size());
 	
 	//
 	for (int i = 0; i < (long)pDevice->m_stringExtensions.size(); i++)
 	{
-		LogManager::getSingleton().LogMessage(pDevice->m_stringExtensions[i]);
+		LogManager::getSingleton().LogMessage(LML_NORMAL, false, _T("  [%d]\t%s"), 
+			i, pDevice->m_stringExtensions[i].c_str());
 	}
 }
+
+
+#if defined (_PLATFORM_WINDOW_)
+VOID	GL3DeviceManager::EnumDevices()
+{
+	for (int l = 0; ; l++)
+	{
+		DISPLAY_DEVICE	displaydevice = {0};
+		displaydevice.cb = sizeof(DISPLAY_DEVICE);
+
+		if(!EnumDisplayDevices(NULL, l, &displaydevice, 0))
+		{
+			break;
+		}
+		else
+		{
+			//if "RDPDD Chained DD" then skip
+			//if "RDP Encoder Mirror Driver" then skip
+			//if "RDP Reflector Display Driver" then skip
+			if( //displaydevice.StateFlags == 0 ||
+				(displaydevice.StateFlags & DISPLAY_DEVICE_MIRRORING_DRIVER) )
+			{ continue; }
+
+			if(  displaydevice.StateFlags == 0 ||
+				(displaydevice.StateFlags & DISPLAY_DEVICE_PRIMARY_DEVICE) ||
+				(displaydevice.StateFlags & DISPLAY_DEVICE_ATTACHED_TO_DESKTOP) ||
+				(displaydevice.StateFlags & DISPLAY_DEVICE_MODESPRUNED) )
+			{
+				GL3Device*	device	= new GL3Device();
+				device->m_bActive		= false;
+				device->m_stringID		= displaydevice.DeviceID;
+				device->m_stringName	= displaydevice.DeviceName;
+				device->m_stringDesc	= displaydevice.DeviceString;
+
+				if(displaydevice.StateFlags & DISPLAY_DEVICE_ATTACHED_TO_DESKTOP)
+				{
+					device->m_bActive	= true;
+					m_pCurrentDevice	= device;
+				}
+
+				m_DeviceList.push_back(device);
+			}
+		}
+	}
+}
+#else
+VOID	GL3DeviceManager::EnumDevices()
+{
+}
+#endif

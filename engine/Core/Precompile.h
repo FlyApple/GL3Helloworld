@@ -11,7 +11,9 @@
 
 #pragma once
 
+#if defined (_PLATFORM_MAC_)
 #define _UNICODE
+#endif
 
 //
 #include "Platform.h"
@@ -19,6 +21,8 @@
 //
 #if defined (_PLATFORM_WINDOW_)
 #pragma warning(disable: 4819)
+#pragma warning(disable: 4996)
+
 #elif defined (_PLATFORM_MAC_)
 
 #if defined(__OBJC__)
@@ -63,6 +67,11 @@
 #define TRUE					1
 #define FALSE					0
 
+//
+#define MXE_API_C				
+#define MXE_API_CPP
+
+
 #elif defined(_PLATFORM_LINUX_)
 
 //
@@ -80,7 +89,7 @@
 #define MXE_API_C				extern "C"
 #define MXE_API_CPP
 
-
+//
 #endif
 
 
@@ -102,7 +111,28 @@
 #endif
 
 
+//
+#ifndef _STR2WSTR
+#define __STR2WSTR(str)			L##str
+#define _STR2WSTR(str)			__STR2WSTR(str)
+#endif
 
+#ifndef __FILEW__
+#define __FILEW__				_STR2WSTR(__FILE__)
+#endif
+
+#ifndef __FUNCTIONW__
+#define __FUNCTIONW__			_STR2WSTR(__FUNCTION__)
+#endif
+
+//
+#ifdef  _UNICODE
+#define __T_FILE__				__FILEW__
+#define __T_FUNCTION__			__FUNCTIONW__
+#else
+#define __T_FILE__				__FILE__
+#define __T_FUNCTION__			__FUNCTION__
+#endif
 
 //
 #define MXE_DELETE_POINTER(pointer)	if(pointer){ delete pointer; pointer = NULL; }
@@ -155,6 +185,42 @@ __inline StringA StringWToStringA(StringW str)
 	return result;
 }
 
+#elif defined(_PLATFORM_WINDOW_)
+
+__inline StringW StringAToStringW(StringA str)
+{
+	StringW result = L"";
+
+	int nLength = MultiByteToWideChar(CP_ACP, 0, str.c_str(), (int)str.length(), NULL, 0);
+	if(nLength > 0)
+	{
+		WCHAR*	szCharW	= new WCHAR[nLength + 1]; ZeroMemory(szCharW, sizeof(WCHAR) * (nLength + 1));
+		MultiByteToWideChar(CP_ACP, 0, str.c_str(), (int)str.length(), szCharW, nLength);
+
+		result  = szCharW;
+		delete [] szCharW;
+	}
+	return result;
+}
+
+__inline StringA StringWToStringA(StringW str)
+{
+	StringA result = "";
+	
+	int nLength = WideCharToMultiByte(CP_ACP, 0, str.c_str(), (int)str.length(), NULL, 0, NULL, NULL);
+	if(nLength > 0)
+	{
+		CHAR*	szCharA	= new CHAR[nLength + 1]; ZeroMemory(szCharA, sizeof(CHAR) * (nLength + 1));
+		WideCharToMultiByte(CP_ACP, 0, str.c_str(), (int)str.length(), szCharA, nLength, NULL, NULL);
+
+		result  = szCharA;
+		delete [] szCharA;
+	}
+	return result;
+}
+
+#endif
+
 __inline StringT StringAToStringT(StringA str)
 {
 #ifdef _UNICODE
@@ -172,8 +238,6 @@ __inline StringT StringWToStringT(StringW str)
 	return StringWToStringA(str);
 #endif
 }
-
-#endif
 
 //
 typedef std::basic_stringstream<TCHAR>		_stringstream_base;

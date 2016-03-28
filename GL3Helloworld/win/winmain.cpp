@@ -5,8 +5,13 @@
 
 #include "Precompile.h"
 #include "GL3Precompile.h"
+
 #include "win/GL3Win32RenderWindow.h"
 #include "GL3RenderSystem.h"
+
+//#include "D3D11Precompile.h"
+//#include "D3D11RenderWindow.h"
+//#include "D3D11RenderSystem.h"
 
 #include "../GL3Helloworld.h"
 
@@ -42,11 +47,15 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
                      LPTSTR    lpCmdLine,
                      int       nCmdShow)
 {
+	CoInitialize( NULL );
+
 	UNREFERENCED_PARAMETER(hPrevInstance);
 	UNREFERENCED_PARAMETER(lpCmdLine);
 
 	g_Helloworld.ActiveRenderWindow(new GL3Win32RenderWindow());
 	g_Helloworld.ActiveRenderSystem(new GL3RenderSystem());
+	//g_Helloworld.ActiveRenderWindow(new D3D11RenderWindow());
+	//g_Helloworld.ActiveRenderSystem(new D3D11RenderSystem());
 	g_Helloworld.Initialize();
 
 	// 初始化全局字符串
@@ -82,6 +91,8 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
 	ExitInstance( );
 
 	g_Helloworld.Release();
+
+	CoUninitialize( );
 	return (int) msg.wParam;
 }
 
@@ -219,6 +230,11 @@ LRESULT CALLBACK MainWindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM l
 			{
 				g_bActive	= TRUE;
 			}
+			break;
+		}
+	case WM_SIZE:
+		{
+			g_Helloworld.ActiveRenderWindow<GL3RenderWindow>()->Resize(LOWORD(lParam), HIWORD(lParam));
 			break;
 		}
 	case WM_DESTROY:

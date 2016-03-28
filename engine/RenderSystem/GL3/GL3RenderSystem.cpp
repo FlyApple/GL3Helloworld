@@ -28,6 +28,9 @@ void	GL3RenderSystem::Release()
 	m_pDeviceManager->Release();
 	
 	//
+	LogManager::getSingleton().LogMessage(LML_NORMAL, false, _T("[RenderSystem OpenGL V3] Release ending..."));
+
+	//
 	RenderSystem::Release();
 }
 
@@ -37,10 +40,12 @@ bool	GL3RenderSystem::Initialize()
 	{ return false; }
 
 	//
+	LogManager::getSingleton().LogMessage(LML_NORMAL, false, _T("[RenderSystem OpenGL V3] Initialize starting..."));
+
+	//
 	if (!m_pDeviceManager || !m_pDeviceManager->Initialize())
 	{
-		LogManager::getSingleton().LogMessage(_T("<") + StringAToStringT(__FUNCTION__) + _T(">") +
-											  _T(" m_pDeviceManager->Initialize() is fail."));
+		LogManager::getSingleton().LogMessage(LML_NORMAL, false, _T("<%s> m_pDeviceManager->Initialize() is fail."), __T_FUNCTION__);
 		return false;
 	}
 	m_pDeviceManager->PrintDeviceInformation();
