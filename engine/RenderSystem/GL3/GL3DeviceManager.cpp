@@ -93,8 +93,13 @@ VOID	GL3DeviceManager::PrintDeviceInformation(GL3Device* pDevice)
 	//
 	for (int i = 0; i < (long)pDevice->m_stringExtensions.size(); i++)
 	{
-		LogManager::getSingleton().LogMessage(LML_NORMAL, false, _T("  [%d]\t%s"), 
+#if defined(_UNICODE)
+		LogManager::getSingleton().LogMessage(LML_NORMAL, false, L"  [%d]\t%S",
 			i, pDevice->m_stringExtensions[i].c_str());
+#else
+		LogManager::getSingleton().LogMessage(LML_NORMAL, false, "  [%d]\t%s",
+											  i, pDevice->m_stringExtensions[i].c_str());
+#endif
 	}
 }
 

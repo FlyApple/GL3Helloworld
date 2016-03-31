@@ -11,12 +11,12 @@
 
 #pragma once
 
+//
+#include "Platform.h"
+
 #if defined (_PLATFORM_MAC_)
 #define _UNICODE
 #endif
-
-//
-#include "Platform.h"
 
 //
 #if defined (_PLATFORM_WINDOW_)
@@ -93,6 +93,9 @@
 #endif
 
 
+// 语言支持
+#include "base/langT.h"
+
 
 //
 #if defined(_PLATFORM_WINDOW_)
@@ -105,7 +108,10 @@
 
 #include "base/baseT.h"
 #include "base/charT.h"
-		
+
+//
+#define _STR2WSTR(str)			str
+//
 #define MXE_CALLBACK
 
 #endif
@@ -153,18 +159,6 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
-
-
-// 语言支持
-#if defined(_PLATFORM_WINDOW_)
-	#define MXE_STREAM_LOCALE_CHS	"chs"
-	#define MXE_STREAM_LOCALE_ENG	"eng"
-
-#elif defined(_PLATFORM_MAC_)
-	#define MXE_STREAM_LOCALE_CHS	"zh_CN"
-	#define MXE_STREAM_LOCALE_ENG	"en_US"
-
-#endif
 
 //
 #if defined(_PLATFORM_MAC_) || defined(_PLATFORM_LINUX_)

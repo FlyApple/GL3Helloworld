@@ -121,16 +121,16 @@ VOID	GL3OSXRenderWindow::Resize(float width, float height)
 }
 
 
-BOOL	GL3OSXRenderWindow::onRenderBegin(RenderSystem* pRenderSystem)
+BOOL	GL3OSXRenderWindow::update()
 { 
-	if(!GL3RenderWindow::onRenderBegin(pRenderSystem))
+	if(!GL3RenderWindow::update())
 	{ return FALSE; }
 
 	//
 	return TRUE; 
 }
 
-BOOL	GL3OSXRenderWindow::onRenderEnd(RenderSystem* pRenderSystem)
+VOID	GL3OSXRenderWindow::flush()
 {
 	if(m_pContextObj)
 	{
@@ -138,5 +138,5 @@ BOOL	GL3OSXRenderWindow::onRenderEnd(RenderSystem* pRenderSystem)
 	}
 	
 	//
-	return GL3RenderWindow::onRenderEnd(pRenderSystem);
+	return GL3RenderWindow::flush();
 }

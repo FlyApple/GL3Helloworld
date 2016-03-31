@@ -2,6 +2,10 @@
 #include "Precompile.h"
 #include "LogManager.h"
 
+#ifdef	_UNICODE
+#include <locale.h>
+#endif //_UNICODE
+
 //
 Log::Log( const StringT& name, bool debugger_output, bool suppress_file_output )
 		:	m_LogLevel(LCL_NORMAL), 
@@ -10,7 +14,7 @@ Log::Log( const StringT& name, bool debugger_output, bool suppress_file_output )
 			m_bTimeStamp(true),
 			m_stringLogName(name)
 {
-	// �Ƿ񴴽���־�ļ�:
+	//  «∑Ò¥¥Ω®»’÷æŒƒº˛:
 	if (!m_bSuppressFile)
 	{
 #if !defined (_PLATFORM_WINDOW_) && defined(_UNICODE)
@@ -18,6 +22,17 @@ Log::Log( const StringT& name, bool debugger_output, bool suppress_file_output )
 #else
 		m_fpLog.open(name.c_str());
 #endif
+		
+#ifdef	_UNICODE
+#if defined(_PLATFORM_WINDOW_)
+		m_fpLog.imbue(std::locale(MXE_LOCALE_LANGUAGE));
+		
+#elif defined(_PLATFORM_MAC_)
+		m_fpLog.imbue(std::locale(MXE_LOCALE_LANGUAGE));
+		
+#endif
+#endif //_UNICODE
+		
 	}
 }
 
@@ -105,16 +120,22 @@ void	LogManager::Release()
 
 bool	LogManager::Initialize()
 {
-#if defined(_PLATFORM_WINDOW_)
 #ifdef	_UNICODE
-	std::coutT.imbue(std::locale(MXE_STREAM_LOCALE_CHS));
-	std::cerrT.imbue(std::locale(MXE_STREAM_LOCALE_CHS));
-#endif
-#elif defined(_PLATFORM_MAC_)
-	std::coutT.imbue(std::locale(MXE_STREAM_LOCALE_CHS));
-	std::cerrT.imbue(std::locale(MXE_STREAM_LOCALE_CHS));
-#endif
+	setlocale(LC_ALL, MXE_LOCALE_LANGUAGE);
+#endif //_UNICODE
+	
+#ifdef	_UNICODE
+#if defined(_PLATFORM_WINDOW_)
+	std::coutT.imbue(std::locale(MXE_LOCALE_LANGUAGE));
+	std::cerrT.imbue(std::locale(MXE_LOCALE_LANGUAGE));
 
+#elif defined(_PLATFORM_MAC_)
+	std::coutT.imbue(std::locale(MXE_LOCALE_LANGUAGE));
+	std::cerrT.imbue(std::locale(MXE_LOCALE_LANGUAGE));
+	
+#endif
+#endif //_UNICODE
+	
 	//
 	return true;
 }

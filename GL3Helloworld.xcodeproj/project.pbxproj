@@ -30,6 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3B2444321CAD7D5D0099967E /* langT.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = langT.h; path = engine/Core/base/langT.h; sourceTree = "<group>"; };
 		3B28ADBF1CA3000500D67794 /* GL3Helloworld.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GL3Helloworld.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B28ADD31CA30A4D00D67794 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = osx/main.m; sourceTree = "<group>"; };
 		3B28ADD51CA30A5900D67794 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = osx/AppDelegate.h; sourceTree = "<group>"; };
@@ -188,6 +189,7 @@
 			children = (
 				3BFC6BC91CA463A90047A11F /* baseT.h */,
 				3BFC6BC71CA456B70047A11F /* charT.h */,
+				3B2444321CAD7D5D0099967E /* langT.h */,
 			);
 			name = base;
 			sourceTree = "<group>";

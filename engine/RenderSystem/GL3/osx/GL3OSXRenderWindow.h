@@ -21,15 +21,15 @@ public:
 	virtual BOOL	LoadRenderWindow(const StringDictionaryT<ULONG_PTR>& option_values);
 	virtual	BOOL	DestroyRenderWindow();
 
+	virtual BOOL	update();
+	virtual VOID	flush();
+	
 	//
 	virtual VOID	Resize(float width, float height);
 	
 protected:
 	virtual BOOL	InitializeOpenGL();
 	virtual VOID	ReleaseOpenGL();
-
-	virtual	BOOL	onRenderBegin(RenderSystem* pRenderSystem);
-	virtual BOOL	onRenderEnd(RenderSystem* pRenderSystem);
 	
 protected:
 	
