@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3B2444361CAD82840099967E /* Vector3D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B2444351CAD82840099967E /* Vector3D.cpp */; };
+		3B2444391CB0469E0099967E /* Matrix3D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B2444371CB0469E0099967E /* Matrix3D.cpp */; };
 		3B28ADD41CA30A4D00D67794 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B28ADD31CA30A4D00D67794 /* main.m */; };
 		3B28ADDA1CA30A5900D67794 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B28ADD61CA30A5900D67794 /* Assets.xcassets */; };
 		3B28ADDC1CA30A5900D67794 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3B28ADD81CA30A5900D67794 /* AppDelegate.mm */; };
@@ -34,6 +35,8 @@
 		3B2444321CAD7D5D0099967E /* langT.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = langT.h; path = engine/Core/base/langT.h; sourceTree = "<group>"; };
 		3B2444341CAD823E0099967E /* Vector3D.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Vector3D.h; path = engine/Core/math/Vector3D.h; sourceTree = "<group>"; };
 		3B2444351CAD82840099967E /* Vector3D.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Vector3D.cpp; path = engine/Core/math/Vector3D.cpp; sourceTree = "<group>"; };
+		3B2444371CB0469E0099967E /* Matrix3D.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Matrix3D.cpp; path = engine/Core/math/Matrix3D.cpp; sourceTree = "<group>"; };
+		3B2444381CB0469E0099967E /* Matrix3D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Matrix3D.h; path = engine/Core/math/Matrix3D.h; sourceTree = "<group>"; };
 		3B28ADBF1CA3000500D67794 /* GL3Helloworld.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GL3Helloworld.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B28ADD31CA30A4D00D67794 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = osx/main.m; sourceTree = "<group>"; };
 		3B28ADD51CA30A5900D67794 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = osx/AppDelegate.h; sourceTree = "<group>"; };
@@ -95,8 +98,10 @@
 		3B2444331CAD82120099967E /* math */ = {
 			isa = PBXGroup;
 			children = (
-				3B2444341CAD823E0099967E /* Vector3D.h */,
+				3B2444371CB0469E0099967E /* Matrix3D.cpp */,
+				3B2444381CB0469E0099967E /* Matrix3D.h */,
 				3B2444351CAD82840099967E /* Vector3D.cpp */,
+				3B2444341CAD823E0099967E /* Vector3D.h */,
 			);
 			name = math;
 			sourceTree = "<group>";
@@ -320,6 +325,7 @@
 				3BCA55831CA4505700C9144C /* RenderWindow.cpp in Sources */,
 				3B54A7B81CA317AC008D1C11 /* Application.cpp in Sources */,
 				3BFC6BCF1CA479330047A11F /* GL3RenderSystem.cpp in Sources */,
+				3B2444391CB0469E0099967E /* Matrix3D.cpp in Sources */,
 				3BFC6BDA1CA482910047A11F /* OSXApplication.mm in Sources */,
 				3B5B29421CA5E2A100487761 /* GL3Context3D.mm in Sources */,
 			);

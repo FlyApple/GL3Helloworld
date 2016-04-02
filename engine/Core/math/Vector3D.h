@@ -49,6 +49,34 @@ namespace Math3D {
 		const static Vector2		ZERO;
 		const static Vector2		AXIS_X;
 		const static Vector2		AXIS_Y;
+		
+	public:
+		Vector2		operator + (const Vector2& v)
+		{
+			return Vector2(x+v.x, y+v.y);
+		}
+		Vector2		operator - (const Vector2& v)
+		{
+			return Vector2(x-v.x, y-v.y);
+		}
+		void		operator += (const Vector2& v)
+		{
+			x += v.x; y += v.y;
+		}
+		void		operator -= (const Vector2& v)
+		{
+			x -= v.x, y -= v.y;
+		}
+		
+	public:
+		__inline float	dotProduct(const Vector2& v)
+		{
+			return (x*v.x) + (y*v.y);
+		}
+		__inline float	crossProduct(const Vector2& v)
+		{
+			return (x*v.y) - (y*v.x);
+		}
 	};
 	
 	//
@@ -104,6 +132,34 @@ namespace Math3D {
 		const static Vector3		AXIS_X;
 		const static Vector3		AXIS_Y;
 		const static Vector3		AXIS_Z;
+		
+	public:
+		Vector3		operator + (const Vector3& v)
+		{
+			return Vector3(x+v.x, y+v.y, z+v.z);
+		}
+		Vector3		operator - (const Vector3& v)
+		{
+			return Vector3(x-v.x, y-v.y, z-v.z);
+		}
+		void		operator += (const Vector3& v)
+		{
+			x += v.x; y += v.y; z += v.z;
+		}
+		void		operator -= (const Vector3& v)
+		{
+			x -= v.x, y -= v.y; z -= v.z;
+		}
+		
+	public:
+		__inline float	dotProduct(const Vector3& v)
+		{
+			return (x*v.x) + (y*v.y) + (z*v.z);
+		}
+		__inline Vector3	crossProduct(const Vector3& v)
+		{
+			return Vector3((y*v.z) - (z*v.y), (z*v.x) - (x*v.z), (x*v.y) - (v.x*y));
+		}
 	};
 	
 	//
