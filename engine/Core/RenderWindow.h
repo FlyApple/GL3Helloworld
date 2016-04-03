@@ -13,6 +13,9 @@ public:
 	RenderWindow(void);
 	virtual ~RenderWindow(void);
 
+	float			getWidth(){ return m_fWidth; };
+	float			getHeight(){ return m_fHeight; };
+	
 public:
 	virtual BOOL	LoadRenderWindow(const StringDictionaryT<ULONG_PTR>& option_values);
 	virtual	BOOL	DestroyRenderWindow();

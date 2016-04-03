@@ -6,7 +6,10 @@
 #include "GL3Helloworld.h"
 
 #include "GL3RenderSystem.h"
+#include "GL3RenderWindow.h"
 
+#include "math/Perspective3D.h"
+#include "math/LookAt3D.h"
 
 //
 GL3Helloworld::GL3Helloworld()
@@ -30,7 +33,7 @@ bool	GL3Helloworld::Initialize()
 	if(!Application::Initialize())
 	{ return false; }
 
-	//¿ÉÔÚ´ËÌŽ„“½¨ÀLˆD´°¿ÚºÍÀLˆDÏµ½y,»òÕßÔÚÕ{ÓÃËüÖ®Ç°ßMÐÐ„“½¨
+	//Ã¸â€¦â€˜â„Â¥Ã€ÃƒÃ©Ã‘Ã¬Î©Â®Â¿LÃ DÂ¥âˆžÃ¸â„âˆ«Ã•Â¿LÃ DÅ“ÂµÎ©y,ÂªÃšâ€™ï¬‚â€˜â„â€™{â€âˆšÃ€Â¸Ã·Ã†Â«âˆžï¬‚Mâ€“â€“Ã‘Ã¬Î©Â®
 	//this->ActiveRenderWindow(new RenderWindow());
 	//this->ActiveRenderSystem(new RenderSystem());
 
@@ -45,6 +48,18 @@ BOOL	GL3Helloworld::InitInstance()
 	if(!m_pActiveRenderSystem || !m_pActiveRenderSystem->Initialize())
 	{ return FALSE; }
 
+	Math3D::Matrix4x4	pm;
+	pm = Math3D::Matrix4x4::IDENTITY;
+	pm = Math3D::PerspectiveFOVRHM(this->ActiveRenderWindow<GL3RenderWindow>()->getWidth()/
+													   this->ActiveRenderWindow<GL3RenderWindow>()->getHeight(),
+													   45.0f, 0.1f, 1000.0f);
+
+	Math3D::Matrix4x4	vm;
+	vm = Math3D::Matrix4x4::IDENTITY;
+	vm = Math3D::LookAtRHM(Math3D::Vector3(0.0f, 0.0f, 1.0f),
+											   Math3D::Vector3(0.0f, 0.0f, 0.0f),
+											   Math3D::Vector3::AXIS_Y);
+	
 	return TRUE;
 }
 

@@ -37,6 +37,9 @@
 		3B2444351CAD82840099967E /* Vector3D.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Vector3D.cpp; path = engine/Core/math/Vector3D.cpp; sourceTree = "<group>"; };
 		3B2444371CB0469E0099967E /* Matrix3D.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Matrix3D.cpp; path = engine/Core/math/Matrix3D.cpp; sourceTree = "<group>"; };
 		3B2444381CB0469E0099967E /* Matrix3D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Matrix3D.h; path = engine/Core/math/Matrix3D.h; sourceTree = "<group>"; };
+		3B24443A1CB16F570099967E /* Perspective3D.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Perspective3D.h; path = engine/Core/math/Perspective3D.h; sourceTree = "<group>"; };
+		3B24443B1CB172240099967E /* Ortho3D.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Ortho3D.h; path = engine/Core/math/Ortho3D.h; sourceTree = "<group>"; };
+		3B24443C1CB174050099967E /* LookAt3D.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LookAt3D.h; path = engine/Core/math/LookAt3D.h; sourceTree = "<group>"; };
 		3B28ADBF1CA3000500D67794 /* GL3Helloworld.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GL3Helloworld.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B28ADD31CA30A4D00D67794 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = osx/main.m; sourceTree = "<group>"; };
 		3B28ADD51CA30A5900D67794 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = osx/AppDelegate.h; sourceTree = "<group>"; };
@@ -102,6 +105,9 @@
 				3B2444381CB0469E0099967E /* Matrix3D.h */,
 				3B2444351CAD82840099967E /* Vector3D.cpp */,
 				3B2444341CAD823E0099967E /* Vector3D.h */,
+				3B24443A1CB16F570099967E /* Perspective3D.h */,
+				3B24443B1CB172240099967E /* Ortho3D.h */,
+				3B24443C1CB174050099967E /* LookAt3D.h */,
 			);
 			name = math;
 			sourceTree = "<group>";

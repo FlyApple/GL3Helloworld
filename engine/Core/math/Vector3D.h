@@ -12,6 +12,9 @@
 #pragma once
 
 //
+#include <math.h>
+
+//
 namespace Math3D {
 	
 	//
@@ -69,13 +72,17 @@ namespace Math3D {
 		}
 		
 	public:
+		__inline float	length()
+		{
+			return sqrt((x*x) + (y*y));
+		}
+		__inline float	distance(const Vector2& v)
+		{
+			return sqrt(((x-v.x)*(x-v.x)) + ((y-v.y)*(y-v.y)));
+		}
 		__inline float	dotProduct(const Vector2& v)
 		{
 			return (x*v.x) + (y*v.y);
-		}
-		__inline float	crossProduct(const Vector2& v)
-		{
-			return (x*v.y) - (y*v.x);
 		}
 	};
 	
@@ -152,13 +159,31 @@ namespace Math3D {
 		}
 		
 	public:
+		__inline float	length()
+		{
+			return sqrt((x*x) + (y*y) + (z*z));
+		}
+		__inline float	distance(const Vector3& v)
+		{
+			return sqrt(((x-v.x)*(x-v.x)) + ((y-v.y)*(y-v.y)) + ((z-v.z)*(z-v.z)));
+		}
+		__inline float	normalize()
+		{
+			float l = this->length();
+			x /= l;
+			y /= l;
+			z /= l;
+			return l;
+		}
 		__inline float	dotProduct(const Vector3& v)
 		{
 			return (x*v.x) + (y*v.y) + (z*v.z);
 		}
 		__inline Vector3	crossProduct(const Vector3& v)
 		{
-			return Vector3((y*v.z) - (z*v.y), (z*v.x) - (x*v.z), (x*v.y) - (v.x*y));
+			return Vector3((y*v.z) - (z*v.y),
+						   (z*v.x) - (x*v.z),
+						   (x*v.y) - (y*v.x));
 		}
 	};
 	
@@ -234,6 +259,21 @@ namespace Math3D {
 		
 		const static Vector4		ZERO;
 		const static Vector4		IDENTITY; //Identity
+		
+	public:
+		__inline float	length()
+		{
+			return sqrt((x*x) + (y*y) + (z*z) + (w*w));
+		}
+		__inline float	normalize()
+		{
+			float l = this->length();
+			x /= l;
+			y /= l;
+			z /= l;
+			w /= l;
+			return l;
+		}
 	};
 	
 	//

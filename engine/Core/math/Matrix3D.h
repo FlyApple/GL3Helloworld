@@ -11,8 +11,6 @@
 
 #pragma once
 
-//
-#include "Vector3D.h"
 
 //
 namespace Math3D {
@@ -24,13 +22,32 @@ namespace Math3D {
 		union
 		{
 			float	raw_data[9];
-			Vector3 vector33[3];
+			float	raw_array[3][3];
 		};
 		
 		Matrix3x3()
 		{
 			zero();
 		}
+		
+		Matrix3x3(const Matrix3x3& m)
+		{
+			for(int i = 0; i < 9; i ++)
+			{ raw_data[i] = m.raw_data[i]; }
+		}
+		
+		Matrix3x3(float data00, float data01, float data02,
+				  float data03, float data04, float data05,
+				  float data06, float data07, float data08)
+		{
+			raw_data[ 0] = data00; raw_data[ 1] = data01; raw_data[ 2] = data02;
+			raw_data[ 3] = data03; raw_data[ 4] = data04; raw_data[ 5] = data05;
+			raw_data[ 6] = data06; raw_data[ 7] = data07; raw_data[ 8] = data08;
+		}
+		
+		//
+		const static Matrix3x3		ZERO;
+		const static Matrix3x3		IDENTITY; //Identity
 		
 	public:
 		__inline void		zero()
@@ -56,13 +73,34 @@ namespace Math3D {
 		union
 		{
 			float	raw_data[16];
-			Vector4	vector44[4][4];
+			float	raw_array[4][4];
 		};
 		
 		Matrix4x4()
 		{
 			zero();
 		}
+		
+		Matrix4x4(const Matrix4x4& m)
+		{
+			for(int i = 0; i < 16; i ++)
+			{ raw_data[i] = m.raw_data[i]; }
+		}
+		
+		Matrix4x4(float data00, float data01, float data02, float data03,
+				  float data04, float data05, float data06, float data07,
+				  float data08, float data09, float data10, float data11,
+				  float data12, float data13, float data14, float data15)
+		{
+			raw_data[ 0] = data00; raw_data[ 1] = data01; raw_data[ 2] = data02; raw_data[ 3] = data03;
+			raw_data[ 4] = data04; raw_data[ 5] = data05; raw_data[ 6] = data06; raw_data[ 7] = data07;
+			raw_data[ 8] = data08; raw_data[ 9] = data09; raw_data[10] = data10; raw_data[11] = data11;
+			raw_data[12] = data12; raw_data[13] = data13; raw_data[14] = data14; raw_data[15] = data15;
+		}
+		
+		//
+		const static Matrix4x4		ZERO;
+		const static Matrix4x4		IDENTITY; //Identity
 		
 	public:
 		__inline void		zero()
